@@ -18,7 +18,10 @@ function Navbar(props) {
               alt="logo rapidoo"
             />
             {/* icon */}
-            <button onClick={handleClick} className="m-auto">
+            <button
+              onClick={handleClick}
+              className={` ${props.isSidebarOpen ? "" : "mx-auto"}`}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
