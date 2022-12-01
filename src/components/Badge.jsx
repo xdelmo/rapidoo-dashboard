@@ -2,7 +2,7 @@ import React from "react";
 
 function Badge() {
   return (
-    <div className="max-w-[356px]">
+    <div className="">
       <div className="px-5 bg-accent rounded-md flex justify-between">
         <div className=" py-5 text-light flex flex-col  text-sm">
           <h3>Congratulazioni 🎉 Giorgio!</h3>
@@ -16,11 +16,7 @@ function Badge() {
         </div>
 
         <div>
-          <img
-            src="./assets/badge.svg"
-            className="max-h-[132px] w-auto"
-            alt="badge"
-          />
+          <img src="./assets/badge.svg" className="max-h-[132px]" alt="badge" />
         </div>
       </div>
     </div>
