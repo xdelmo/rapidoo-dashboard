@@ -2,7 +2,7 @@ import React from "react";
 
 function OverTitle(props) {
   return (
-    <div>
+    <div className="mb-[10px]">
       <div className="px-5 flex justify-between items-center  border-b-[2px]">
         <h2 className="text-accent text-lg font-light">{props.title}</h2>
         <button>
