@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import Badge from "./components/Badge";
 import GeneralStats from "./components/GeneralStats";
 import RequestAdvice from "./components/RequestAdvice";
+import Calendar from "./components/Calendar";
+// import OverTitle from "./components/OverTitle";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -47,7 +49,11 @@ function App() {
             <div className="grid-col-span-2">
               <GeneralStats />
             </div>
+            <div className="grid-col-span-2 grid-row-span-2">
+              <Calendar />
+            </div>
             <RequestAdvice />
+            {/* <OverTitle /> */}
           </div>
         </main>
         <footer id="footer" className="bg-primary py-7 px-4">
