@@ -10,7 +10,12 @@ function Navbar(props) {
       <aside aria-label="Sidebar">
         {/* blocco principale */}
         <div className="py-7 px-4">
-          <div className="flex pb-3 flex-wrap gap-4 justify-between items-center">
+          {/* blocco superiore con logo e bottone */}
+          <div
+            className={`flex pb-3 flex-wrap gap-4  items-center ${
+              props.isSidebarOpen ? "justify-between " : "justify-center"
+            }`}
+          >
             {/* logo */}
             <img
               src="./assets/logo.png"
