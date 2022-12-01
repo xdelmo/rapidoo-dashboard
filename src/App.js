@@ -1,15 +1,16 @@
 import Navbar from "./components/Navbar";
 import User from "./components/User";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Badge from "./components/Badge";
 import GeneralStats from "./components/GeneralStats";
+import RequestAdvice from "./components/RequestAdvice";
 
 function App() {
-  const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // hook per avere come default la sidebar aperta se la larghezza dello schermo è maggiore di 768px
   // cioè se è un desktop e non più un tablet
-  React.useEffect(() => {
+  useEffect(() => {
     function handleResize() {
       console.log("resized to: ", window.innerWidth, "x", window.innerHeight);
       if (window.innerWidth > 768) {
@@ -24,7 +25,7 @@ function App() {
   });
 
   return (
-    <div className="App flex min-h-screen w-[100vw] font-main">
+    <div className="App flex min-h-screen w-screen font-main">
       {/* blocco sinistro con navbar */}
       <div
         id="left-column"
@@ -46,6 +47,7 @@ function App() {
             <div className="grid-col-span-2">
               <GeneralStats />
             </div>
+            <RequestAdvice />
           </div>
         </main>
         <footer id="footer" className="bg-primary py-7 px-4">
