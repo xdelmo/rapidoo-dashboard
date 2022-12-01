@@ -10,7 +10,7 @@ function Badge() {
             Hai raggiunto il livello Oro
           </p>
           <p className="my-2 text-xl">250h</p>
-          <button className="rounded-md bg-accentParagraph py-2 max-w-[106px] text-xs px-3 maxw">
+          <button className="rounded-md bg-accentParagraph py-2 max-w-[106px] text-xs px-3 font-semibold">
             Scopri di più
           </button>
         </div>
