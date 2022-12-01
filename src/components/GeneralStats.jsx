@@ -12,7 +12,7 @@ function GeneralStats() {
 
         <div className="flex gap-5  ">
           {/* percorsi */}
-          <div className="p-4 bg-primaryLighter w-[48px] h-[48px] rounded-full flex justify-center items-center">
+          <div className="p-1 bg-primaryLighter w-[48px] h-[48px] rounded-full flex justify-center items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -37,7 +37,7 @@ function GeneralStats() {
 
         <div className="flex  gap-5">
           {/* Consulenze */}
-          <div className="p-4 bg-primaryLighter w-[48px] h-[48px] rounded-full flex justify-center items-center">
+          <div className="p-1 bg-primaryLighter w-[48px] h-[48px] rounded-full flex justify-center items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -63,7 +63,7 @@ function GeneralStats() {
 
         <div className="flex  gap-5">
           {/* Ore consulenze */}
-          <div className="p-4 bg-primaryLighter w-[48px] h-[48px] rounded-full flex justify-center items-center">
+          <div className="p-1 bg-primaryLighter w-[48px] h-[48px] rounded-full flex justify-center items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -87,7 +87,7 @@ function GeneralStats() {
         </div>
         <div className="flex  gap-5">
           {/* Classi */}
-          <div className="p-4 bg-primaryLighter w-[48px] h-[48px] rounded-full flex justify-center items-center">
+          <div className="p-1 bg-primaryLighter w-[48px] h-[48px] rounded-full flex justify-center items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
