@@ -5,6 +5,7 @@ import Badge from "./components/Badge";
 import GeneralStats from "./components/GeneralStats";
 import RequestAdvice from "./components/RequestAdvice";
 import Calendar from "./components/Calendar";
+import Courses from "./components/Courses";
 // import OverTitle from "./components/OverTitle";
 
 function App() {
@@ -53,7 +54,9 @@ function App() {
               <Calendar />
             </div>
             <RequestAdvice />
-            {/* <OverTitle /> */}
+            <div className=" grid-row-span-2">
+              <Courses />
+            </div>
           </div>
         </main>
         <footer id="footer" className="bg-primary py-7 px-4">
