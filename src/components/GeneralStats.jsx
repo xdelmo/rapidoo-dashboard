@@ -3,7 +3,7 @@ import React from "react";
 function GeneralStats() {
   return (
     <div className="bg-light h-full rounded-md px-5 pt-5 pb-3 flex justify-between flex-col">
-      <h2>Statistiche generali</h2>
+      <h2 className="text-lg">Statistiche generali</h2>
 
       {/* stats e icone */}
 
