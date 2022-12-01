@@ -37,4 +37,20 @@
   #right-column {
     flex: 5;
   }
+
+  .card-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    margin-inline: auto;
+  }
+
+  /* blocco si espande su 2 colonne */
+  .grid-col-span-2 {
+    grid-column: span 2;
+  }
+  /* blocco si espande su 2 righe */
+  .grid-row-span-2 {
+    grid-row: span 2;
+  }
 }
