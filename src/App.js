@@ -2,7 +2,7 @@ import Navbar from "./components/Navbar";
 import User from "./components/User";
 import React, { useEffect } from "react";
 import Badge from "./components/Badge";
-// import GeneralStats from "./components/GeneralStats";
+import GeneralStats from "./components/GeneralStats";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
@@ -41,9 +41,11 @@ function App() {
         <main className="bg-accentDesaturated py-7 px-4">
           <User />
           {/* griglia */}
-          <div className="flex py-7 gap-7 flex-wrap">
+          <div className="card-grid py-7 grid-flow-dense">
             <Badge />
-            {/* <GeneralStats /> */}
+            <div className="grid-col-span-2">
+              <GeneralStats />
+            </div>
           </div>
         </main>
         <footer id="footer" className="bg-primary py-7 px-4">
