@@ -1,6 +1,7 @@
 import React from "react";
 
 function Navbar(props) {
+  // handleClick per aprire la sidebar
   const handleClick = () => {
     props.setIsSidebarOpen((prevState) => !prevState);
   };
@@ -25,7 +26,10 @@ function Navbar(props) {
             {/* icon */}
             <button
               onClick={handleClick}
-              className={` ${props.isSidebarOpen ? "" : "mx-auto"}`}
+              // bottone invisibile su desktop
+              className={` ${
+                props.isSidebarOpen ? "" : "mx-auto"
+              }  min-[769px]:hidden`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
