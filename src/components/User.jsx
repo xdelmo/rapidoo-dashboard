@@ -3,7 +3,7 @@ import React from "react";
 function User() {
   return (
     <div>
-      <div className="bg-white  px-5 py-3 rounded-md">
+      <div className="bg-white px-5 py-3 rounded-md">
         {/* informazioni */}
         <div className="flex justify-end items-center gap-9">
           {/* notifiche */}
