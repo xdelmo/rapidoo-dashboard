@@ -2,7 +2,7 @@ import Navbar from "./components/Navbar";
 import User from "./components/User";
 import React, { useEffect } from "react";
 import Badge from "./components/Badge";
-import GeneralStats from "./components/GeneralStats";
+// import GeneralStats from "./components/GeneralStats";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
