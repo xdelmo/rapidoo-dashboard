@@ -12,6 +12,7 @@ module.exports = {
         accentDark: "#192027",
         accentDesaturated: "#f0f1f5",
         accentParagraph: "#9496a1",
+        accentLight: "#dfe0e7",
         light: "#fff",
 
         // colori per i vari campi
