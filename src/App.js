@@ -7,6 +7,7 @@ import RequestAdvice from "./components/RequestAdvice";
 import Calendar from "./components/Calendar";
 import Courses from "./components/Courses";
 import Contents from "./components/Contents";
+import Performance from "./components/Performance";
 // import OverTitle from "./components/OverTitle";
 
 function App() {
@@ -58,9 +59,9 @@ function App() {
             <div className=" grid-row-span-2">
               <Courses />
             </div>
-            {/* <div className="grid-col-span-2 grid-row-span-2">
-              <Calendar />
-            </div> */}
+            <div className="grid-col-span-2 grid-row-span-2">
+              <Performance />
+            </div>
             <Contents />
           </div>
         </main>
