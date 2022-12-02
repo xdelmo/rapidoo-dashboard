@@ -6,6 +6,7 @@ import GeneralStats from "./components/GeneralStats";
 import RequestAdvice from "./components/RequestAdvice";
 import Calendar from "./components/Calendar";
 import Courses from "./components/Courses";
+import Contents from "./components/Contents";
 // import OverTitle from "./components/OverTitle";
 
 function App() {
@@ -57,11 +58,14 @@ function App() {
             <div className=" grid-row-span-2">
               <Courses />
             </div>
+            {/* <div className="grid-col-span-2 grid-row-span-2">
+              <Calendar />
+            </div> */}
+            <Contents />
           </div>
         </main>
-        <footer id="footer" className="bg-primary py-7 px-4">
-          {/* footer */}
-        </footer>
+        {/* <footer id="footer" className="bg-primary py-7 px-4">
+        </footer> */}
       </div>
     </div>
   );
