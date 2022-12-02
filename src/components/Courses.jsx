@@ -7,7 +7,11 @@ function Courses() {
       <OverTitle title="Corsi in evidenza" />
 
       <div className="rounded-md bg-light">
-        <img src="./assets/corsi.png" alt="sample corsi" />
+        <img
+          src="./assets/corsi.png"
+          className="w-full block"
+          alt="sample corsi"
+        />
         <div className="p-5">
           <div className="flex">
             {/* data  */}
