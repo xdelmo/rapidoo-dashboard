@@ -11,7 +11,7 @@ function Contents() {
         <div className="flex flex-col gap-5">
           {/* dispense */}
           <div className="flex items-center gap-5">
-            {/* icona */}
+            {/* icona pagina */}
             <div className="p-1 bg-accentLight w-[42px] aspect-square h-[42px] rounded-[5px] flex justify-center items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -39,14 +39,16 @@ function Contents() {
               </button>
             </div>
 
+            {/* opzioni su contenuti */}
             <div className="flex flex-col gap-2 lg:flex-row items-center ml-auto text-accentParagraph">
+              {/* icona occhio */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-4 h-4  hover:text-accent"
+                className="w-4 h-4  hover:text-accent cursor-pointer"
               >
                 <path
                   strokeLinecap="round"
@@ -60,13 +62,14 @@ function Contents() {
                 />
               </svg>
 
+              {/* icona download */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-4 h-4  hover:text-accent"
+                className="w-4 h-4  hover:text-accent cursor-pointer"
               >
                 <path
                   strokeLinecap="round"
@@ -107,14 +110,16 @@ function Contents() {
               </button>
             </div>
 
+            {/* opzioni su contenuti */}
             <div className="flex flex-col gap-2 lg:flex-row items-center ml-auto text-accentParagraph">
+              {/* icona occhio */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-4 h-4  hover:text-accent"
+                className="w-4 h-4  hover:text-accent cursor-pointer"
               >
                 <path
                   strokeLinecap="round"
@@ -160,14 +165,16 @@ function Contents() {
               </button>
             </div>
 
+            {/* opzioni su contenuti */}
             <div className="flex flex-col gap-2 lg:flex-row items-center ml-auto text-accentParagraph">
+              {/* icona occhio */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-4 h-4  hover:text-accent"
+                className="w-4 h-4  hover:text-accent cursor-pointer"
               >
                 <path
                   strokeLinecap="round"
@@ -181,13 +188,14 @@ function Contents() {
                 />
               </svg>
 
+              {/* icona download */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-4 h-4  hover:text-accent"
+                className="w-4 h-4  hover:text-accent cursor-pointer"
               >
                 <path
                   strokeLinecap="round"
