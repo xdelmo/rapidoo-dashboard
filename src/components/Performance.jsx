@@ -19,6 +19,7 @@ function Performance() {
     labels: advicesData.map((data) => data.day),
     datasets: [
       {
+        maxBarThickness: 17,
         label: "Consulenze",
         options: {
           responsive: true,
