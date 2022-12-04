@@ -6,7 +6,7 @@ function Contents() {
     <div>
       <OverTitle title="Contenuti in evidenza" />
 
-      <div className="bg-light  rounded-md px-5 pt-5 pb-3 flex justify-between flex-col">
+      <div className="flex flex-col justify-between px-5 pt-5 pb-3 rounded-md bg-light">
         {/* informazione data conferenza */}
         <div className="flex flex-col gap-5">
           {/* dispense */}
@@ -31,16 +31,16 @@ function Contents() {
 
             {/* data e orario corso */}
             <div>
-              <span className=" block leading-none text-sm">
+              <span className="block text-sm leading-none ">
                 Dispensa corso
               </span>
-              <button className=" text-primary font-semibold rounded-full py-1 px-3 mt-1 text-xs border border-primary">
-                <span className="hidden xl:inline-block">Nome</span> tag
+              <button className="hidden px-3 py-1 mt-1 text-xs font-semibold border rounded-full xl:inline-block text-primary border-primary">
+                <span className="hidden xl:inline-block">Nome tag</span>
               </button>
             </div>
 
             {/* opzioni su contenuti */}
-            <div className="flex flex-col gap-2 lg:flex-row items-center ml-auto text-accentParagraph">
+            <div className="flex flex-col items-center gap-2 ml-auto lg:flex-row text-accentParagraph">
               {/* icona occhio */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +48,7 @@ function Contents() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-4 h-4  hover:text-accent cursor-pointer"
+                className="w-4 h-4 cursor-pointer hover:text-accent"
               >
                 <path
                   strokeLinecap="round"
@@ -69,7 +69,7 @@ function Contents() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-4 h-4  hover:text-accent cursor-pointer"
+                className="w-4 h-4 cursor-pointer hover:text-accent"
               >
                 <path
                   strokeLinecap="round"
@@ -102,16 +102,16 @@ function Contents() {
 
             {/* data e orario corso */}
             <div>
-              <span className=" block leading-none text-sm">
+              <span className="block text-sm leading-none ">
                 Come usare Datamotiv{" "}
               </span>
-              <button className=" text-primary font-semibold rounded-full py-1 px-3 mt-1 text-xs border border-primary">
-                <span className="hidden xl:inline-block">Nome</span> tag
+              <button className="hidden px-3 py-1 mt-1 text-xs font-semibold border rounded-full xl:inline-block text-primary border-primary">
+                <span className="hidden xl:inline-block">Nome tag</span>
               </button>
             </div>
 
             {/* opzioni su contenuti */}
-            <div className="flex flex-col gap-2 lg:flex-row items-center ml-auto text-accentParagraph">
+            <div className="flex flex-col items-center gap-2 ml-auto lg:flex-row text-accentParagraph">
               {/* icona occhio */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -119,7 +119,7 @@ function Contents() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-4 h-4  hover:text-accent cursor-pointer"
+                className="w-4 h-4 cursor-pointer hover:text-accent"
               >
                 <path
                   strokeLinecap="round"
@@ -157,16 +157,16 @@ function Contents() {
 
             {/* data e orario corso */}
             <div>
-              <span className=" block leading-none text-sm">
+              <span className="block text-sm leading-none ">
                 Presentazione corso
               </span>
-              <button className=" text-primary font-semibold rounded-full py-1 px-3 mt-1 text-xs border border-primary">
-                <span className="hidden xl:inline-block">Nome</span> tag
+              <button className="hidden px-3 py-1 mt-1 text-xs font-semibold border rounded-full xl:inline-block text-primary border-primary">
+                <span className="hidden xl:inline-block">Nome tag</span>
               </button>
             </div>
 
             {/* opzioni su contenuti */}
-            <div className="flex flex-col gap-2 lg:flex-row items-center ml-auto text-accentParagraph">
+            <div className="flex flex-col items-center gap-2 ml-auto lg:flex-row text-accentParagraph">
               {/* icona occhio */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -174,7 +174,7 @@ function Contents() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-4 h-4  hover:text-accent cursor-pointer"
+                className="w-4 h-4 cursor-pointer hover:text-accent"
               >
                 <path
                   strokeLinecap="round"
@@ -195,7 +195,7 @@ function Contents() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-4 h-4  hover:text-accent cursor-pointer"
+                className="w-4 h-4 cursor-pointer hover:text-accent"
               >
                 <path
                   strokeLinecap="round"
