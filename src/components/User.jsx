@@ -3,9 +3,9 @@ import React from "react";
 function User() {
   return (
     <div>
-      <div className="bg-white px-5 py-3 rounded-md">
+      <div className="px-5 py-3 bg-white rounded-md">
         {/* informazioni */}
-        <div className="flex justify-end items-center gap-9">
+        <div className="flex items-center justify-end gap-9">
           {/* icona notifiche */}
           <div className="flex gap-3">
             <div className="relative cursor-pointer">
@@ -49,7 +49,7 @@ function User() {
 
           {/* info cliente */}
           <div>
-            <div className="flex justify-center items-center gap-4">
+            <div className="flex items-center justify-center gap-4">
               {/* anagrafica utente */}
               <div className="flex justify-end flex-col w-[100px] text-right">
                 <p className="text-[14px]">Giorgio Corelli </p>
@@ -62,14 +62,14 @@ function User() {
               </div>
 
               {/* avatar utente */}
-              <div className="cursor-pointer relative">
+              <div className="relative cursor-pointer">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className=" h-[38px]"
+                  className="h-[38px]"
                 >
                   <path
                     strokeLinecap="round"
@@ -78,7 +78,7 @@ function User() {
                   />
                 </svg>
                 {/* stato utente */}
-                <div className="h-1 w-1 absolute bg-green-500 bottom-0 right-0"></div>
+                <div className="absolute bottom-0 right-0 w-1 h-1 bg-green-500 rounded-full"></div>
               </div>
             </div>
           </div>
