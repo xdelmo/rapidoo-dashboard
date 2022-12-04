@@ -53,4 +53,10 @@
   .grid-row-span-2 {
     grid-row: span 2;
   }
+
+  .oval {
+    height: 16px;
+    width: 16px;
+    border-radius: 100%;
+  }
 }

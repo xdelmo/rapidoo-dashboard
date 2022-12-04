@@ -12,7 +12,7 @@ function BarChart(props) {
     return totalAdvices;
   };
   return (
-    <div>
+    <div className="flex-1 p-5 rounded-md bg-light">
       <div>
         {/* bar chart */}
         <div className="relative">
@@ -26,30 +26,30 @@ function BarChart(props) {
         </div>
 
         {/* totale consulenze */}
-        <h2 className="text-2xl font-semibold mt-5">{getTotalAdvices()}</h2>
+        <h2 className="mt-5 text-2xl font-semibold">{getTotalAdvices()}</h2>
         <span className="inline-block text-sm">Consulenze</span>
 
         {/* trend  */}
-        <p className="font-light my-5">
-          <span className="text-primary font-semibold">+5.2% </span>Rispetto al
+        <p className="my-5 font-light">
+          <span className="font-semibold text-primary">+5.2% </span>Rispetto al
           periodo precedente
         </p>
 
         {/* bottone */}
-        <button className="rounded-md bg-accent py-2 w-full text-light text-xs px-3 font-semibold">
+        <button className="w-full px-3 py-2 text-xs font-semibold rounded-md bg-accent text-light">
           <a href="#" className="inline">
             Approfondisci
           </a>
         </button>
 
         {/* divisorio */}
-        <div className="border-t my-6"></div>
+        <div className="my-6 border-t"></div>
 
         {/* griglia per tag consulenze */}
         <div className="grid grid-cols-2 gap-6">
           {/* cella tag consulenza */}
           <div>
-            <span className="mb-2 text-sm text-accentParagraph block">
+            <span className="block mb-2 text-sm text-accentParagraph">
               Imprenditoria: 20
             </span>
             <div class=" bg-accentDesaturated h-2 rounded-md">
@@ -57,7 +57,7 @@ function BarChart(props) {
             </div>
           </div>
           <div>
-            <span className="mb-2 text-sm text-accentParagraph block">
+            <span className="block mb-2 text-sm text-accentParagraph">
               Economia: 10
             </span>
             <div class=" bg-accentDesaturated h-2 rounded-md">
@@ -65,7 +65,7 @@ function BarChart(props) {
             </div>
           </div>
           <div>
-            <span className="mb-2 text-sm text-accentParagraph block">
+            <span className="block mb-2 text-sm text-accentParagraph">
               Formazione: 15
             </span>
             <div class=" bg-accentDesaturated h-2 rounded-md">
@@ -73,7 +73,7 @@ function BarChart(props) {
             </div>
           </div>
           <div>
-            <span className="mb-2 text-sm text-accentParagraph block">
+            <span className="block mb-2 text-sm text-accentParagraph">
               Operatività: 5
             </span>
             <div class=" bg-accentDesaturated h-2 rounded-md">

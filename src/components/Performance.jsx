@@ -13,6 +13,7 @@ import OverTitle from "./OverTitle";
 // import { faker } from "@faker-js/faker";
 import BarChart from "./BarChart";
 import { advicesData } from "../constants/data";
+import DoughnutChart from "./DoughnutChart";
 
 function Performance() {
   const [userData, setUserData] = useState({
@@ -87,8 +88,9 @@ function Performance() {
   return (
     <div className="h-full">
       <OverTitle title="Le mie performance" />
-      <div className=" bg-light rounded-md p-5">
+      <div className="flex flex-col gap-7 xl:flex-row">
         <BarChart chartData={userData} />
+        <DoughnutChart />
         {/* <Bar options={options} data={data} /> */}
         {/* <div className="">Performance</div> */}
         {/* 2 COMPONENTI DIFFERENTI PER I CHART
