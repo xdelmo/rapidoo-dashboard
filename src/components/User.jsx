@@ -24,8 +24,8 @@ function User() {
                 />
               </svg>
               {/* numero notifiche */}
-              <p className="absolute font-secondary left-[50%] bottom-[50%] bg-primary text-light rounded-full font-semibold p-2 w-[9px] h-[18px] flex justify-center items-center">
-                <span>4</span>
+              <p className="absolute font-secondary left-[50%] bottom-[50%] bg-primary text-light rounded-full font-semibold w-[18px] h-[18px] flex justify-center items-center">
+                <span className="block p-2 text-[12px]">4</span>
               </p>
             </div>
             {/* icona info */}
