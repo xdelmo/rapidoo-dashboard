@@ -52,32 +52,32 @@ function BarChart(props) {
             <span className="block mb-2 text-sm text-accentParagraph">
               Imprenditoria: 20
             </span>
-            <div class=" bg-accentDesaturated h-2 rounded-md">
-              <div class="w-[50%] h-2 bg-entrepreneurship rounded-md"></div>
+            <div className=" bg-accentDesaturated h-2 rounded-md">
+              <div className="w-[50%] h-2 bg-entrepreneurship rounded-md"></div>
             </div>
           </div>
           <div>
             <span className="block mb-2 text-sm text-accentParagraph">
               Economia: 10
             </span>
-            <div class=" bg-accentDesaturated h-2 rounded-md">
-              <div class="w-[70%] h-2 bg-economy rounded-md"></div>
+            <div className=" bg-accentDesaturated h-2 rounded-md">
+              <div className="w-[70%] h-2 bg-economy rounded-md"></div>
             </div>
           </div>
           <div>
             <span className="block mb-2 text-sm text-accentParagraph">
               Formazione: 15
             </span>
-            <div class=" bg-accentDesaturated h-2 rounded-md">
-              <div class="w-[75%] h-2 bg-training rounded-md"></div>
+            <div className=" bg-accentDesaturated h-2 rounded-md">
+              <div className="w-[75%] h-2 bg-training rounded-md"></div>
             </div>
           </div>
           <div>
             <span className="block mb-2 text-sm text-accentParagraph">
               Operatività: 5
             </span>
-            <div class=" bg-accentDesaturated h-2 rounded-md">
-              <div class="w-[90%] h-2 bg-operation rounded-md"></div>
+            <div className=" bg-accentDesaturated h-2 rounded-md">
+              <div className="w-[90%] h-2 bg-operation rounded-md"></div>
             </div>
           </div>
         </div>
