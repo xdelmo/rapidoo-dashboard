@@ -1,19 +1,8 @@
 import React, { useState } from "react";
 import OverTitle from "./OverTitle";
-// import {
-//   Chart as ChartJS,
-//   CategoryScale,
-//   LinearScale,
-//   BarElement,
-//   Title,
-//   Tooltip,
-//   Legend,
-// } from "chart.js";
-// import { Bar } from "react-chartjs-2";
-// import { faker } from "@faker-js/faker";
 import BarChart from "./BarChart";
 import { advicesData } from "../constants/data";
-import DoughnutChart from "./DoughnutChart";
+import RadialChart from "./RadialChart";
 
 function Performance() {
   const [userData, setUserData] = useState({
@@ -90,11 +79,7 @@ function Performance() {
       <OverTitle title="Le mie performance" />
       <div className="flex flex-col gap-7 xl:flex-row">
         <BarChart chartData={userData} />
-        <DoughnutChart />
-        {/* <Bar options={options} data={data} /> */}
-        {/* <div className="">Performance</div> */}
-        {/* 2 COMPONENTI DIFFERENTI PER I CHART
-        BarChart, DoughnutChart */}
+        <RadialChart />
       </div>
     </div>
   );
