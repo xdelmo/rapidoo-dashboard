@@ -51,7 +51,7 @@ function RadialChart() {
         {/* recap conclusi */}
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <div class="oval border-primary border-2 border-solid "></div>
+            <div className="oval border-primary border-2 border-solid "></div>
             <span className="ml-3 ">Conclusi</span>
           </div>
           <span>2</span>
@@ -59,7 +59,7 @@ function RadialChart() {
         {/* recap in corso */}
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <div class="oval border-primaryLight border-2 border-solid"></div>
+            <div className="oval border-primaryLight border-2 border-solid"></div>
             <span className="ml-3 ">In corso</span>
           </div>
           <span>4</span>
