@@ -1,12 +1,13 @@
 import React from "react";
+import FullCalendar from "./FullCalendar";
 
 function Calendar() {
   return (
     <div className="h-full bg-light rounded-md p-5 text-accent">
       {/* blocco superiore */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between mb-5">
         {/* titolo */}
-        <h2 className="mb-2 text-lg font-semibold">Dettagli corso</h2>
+        <h2 className="mb-2 text-lg font-semibold">Calendario</h2>
         {/* icona filtraggio */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -25,11 +26,12 @@ function Calendar() {
       </div>
 
       {/* blocco principale */}
-      <div className="flex flex-col gap-7 xl:flex-row">
+      <div>
         {/* calendario */}
-        <div>calendario</div>
+        <div>
+          <FullCalendar />
+        </div>
         {/* appuntamenti */}
-        <div>appuntamenti</div>
       </div>
     </div>
   );
