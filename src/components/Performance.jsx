@@ -35,12 +35,6 @@ function Performance() {
                 display: false,
               },
             },
-            // NON FUNZIONA LA LARGHEZZA DELLE BARRE
-            // xAxes: [
-            //   {
-            //     barThickness: 1,
-            //   },
-            // ],
             y: {
               display: false,
 
@@ -52,13 +46,6 @@ function Performance() {
                 display: false,
               },
             },
-            yAxes: [
-              {
-                gridLines: {
-                  display: false,
-                },
-              },
-            ],
           },
         },
         data: advicesData.map((data) => data.advicesDone),
