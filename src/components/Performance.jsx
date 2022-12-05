@@ -13,6 +13,8 @@ function Performance() {
         label: "Consulenze",
         options: {
           responsive: true,
+          // non disabilita il border radius sulla base del chart
+          borderSkipped: false,
           plugins: {
             legend: {
               display: false,
