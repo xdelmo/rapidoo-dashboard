@@ -255,7 +255,7 @@ export default function Example() {
                     <Meeting meeting={meeting} key={meeting.id} />
                   ))
                 ) : (
-                  <p>Nessun impegno oggi</p>
+                  <p className="xl:pl-5">Nessun impegno oggi</p>
                 )}
               </ol>
             </div>
