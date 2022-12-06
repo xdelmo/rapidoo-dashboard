@@ -17,10 +17,10 @@ function ReservationCard() {
 
   const [isReserved, setIsReserved] = React.useState(false);
 
-  const handleClick = () => {
-    setIsReserved((prevState) => !prevState);
-  };
-  console.log(isReserved);
+  //   const handleClick = () => {
+  //     setIsReserved((prevState) => !prevState);
+  //   };
+
   return (
     <li className="h-full ">
       <div className=" h-full flex border-accent border-solid border-[1px] rounded-md">
@@ -103,7 +103,9 @@ function ReservationCard() {
         <div>
           <div
             className="bg-accent flex h-full text-white rounded-md p-5 justify-center items-center"
-            onClick={handleClick}
+            // cambio stato direttamente con il mouse over
+            onMouseEnter={() => setIsReserved(true)}
+            onMouseLeave={() => setIsReserved(false)}
           >
             <div>
               {!isReserved ? (
