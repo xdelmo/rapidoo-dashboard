@@ -8,6 +8,14 @@
 @tailwind utilities;
 
 @layer utilities {
+  /* preventing scroll over x-axis because of scrollbar width */
+  .App {
+    width: 100%;
+  }
+  body {
+    scrollbar-gutter: stable both-edges;
+  }
+
   html {
     scroll-behavior: smooth;
   }
