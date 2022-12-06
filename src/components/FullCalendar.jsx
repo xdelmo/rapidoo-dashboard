@@ -15,6 +15,7 @@ import {
   startOfToday,
 } from "date-fns";
 import { Fragment, useState } from "react";
+import ReservationCard from "./ReservationCard";
 
 const meetings = [
   {
@@ -257,6 +258,7 @@ export default function Example() {
                 ) : (
                   <p className="xl:pl-5">Nessun impegno oggi</p>
                 )}
+                <ReservationCard />
               </ol>
             </div>
           </section>
