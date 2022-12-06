@@ -88,7 +88,7 @@ const meetings = [
     endDatetime: "2022-12-13T14:30",
     typeMeeting: "economy",
     title: "Contabilità",
-    path: 10,
+    path: 70,
   },
 ];
 
@@ -120,7 +120,7 @@ export default function Example() {
   let selectedDayMeetings = meetings.filter((meeting) =>
     isSameDay(parseISO(meeting.startDatetime), selectedDay)
   );
-  //   console.log(days);
+
   return (
     <div className="">
       <div className="w-full">
@@ -272,10 +272,11 @@ function Meeting({ meeting }) {
   let startDateTime = parseISO(meeting.startDatetime);
   let endDateTime = parseISO(meeting.endDatetime);
 
-  //   const getPathLenght = (meeting) => {
-  //     console.log(`w-[${meeting.path}%]`);
-  //     return `w-[${meeting.path}%]`;
-  //   };
+  // funzione per ottenere la percentuale del percorso
+  // perchè Tailwind non permette l'uso di classi dinamiche all'interno degli stili
+  const getPathLenght = (meeting) => {
+    return `w-[${meeting.path}%]`;
+  };
 
   return (
     <li className="flex items-center px-3 w-full py-4 bg-accentDesaturated rounded-md ">
@@ -335,9 +336,13 @@ function Meeting({ meeting }) {
             {" "}
             <span className="text-xs block">Percorso</span>
             <div className=" bg-accentLight flex-1 h-2 rounded-md w-full">
-              {/* //!  width dinamica non funzionante */}
+              {/* funzione per ottenere la percentuale del percorso
+              perchè Tailwind non permette l'uso di classi dinamiche all'interno degli
+              stili */}
               <div
-                className={String.raw`h-2 bg-accent rounded-md w-[${meeting.path}%]`}
+                className={`${getPathLenght(
+                  meeting
+                )} h-2 bg-accent rounded-md `}
               ></div>
             </div>
           </div>
