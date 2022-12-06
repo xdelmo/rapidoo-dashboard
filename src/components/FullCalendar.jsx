@@ -64,6 +64,30 @@ const meetings = [
       "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     startDatetime: "2022-12-13T14:00",
     endDatetime: "2022-12-13T14:30",
+    typeMeeting: "economy",
+    title: "Contabilità",
+  },
+  {
+    id: 7,
+    name: "Michael Foster",
+    imageUrl:
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    startDatetime: "2022-12-20T09:00",
+    endDatetime: "2022-12-20T11:30",
+    typeMeeting: "entrepreneurship",
+    title: "Informatica e digitalizzazione",
+    path: 25,
+  },
+  {
+    id: 8,
+    name: "Dries Vincent",
+    imageUrl:
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    startDatetime: "2022-12-13T14:00",
+    endDatetime: "2022-12-13T14:30",
+    typeMeeting: "economy",
+    title: "Contabilità",
+    path: 10,
   },
 ];
 
@@ -217,7 +241,7 @@ export default function Example() {
           {/* recap appuntamenti */}
           <section className=" flex-1">
             <div className="flex flex-col justify-center items-center">
-              <h2 className="font-semibold text-gray-900 p-5">
+              <h2 className="font-semibold text-gray-900 xl:p-5 py-5 self-start">
                 <time dateTime={format(today, "dd-MM-yyyy")}>
                   {format(today, "dd MMMM yyyy")}
                 </time>
@@ -225,7 +249,7 @@ export default function Example() {
                   {format(selectedDay, "MMM dd, yyy")}
                 </time> */}
               </h2>
-              <ol className="mt-4 space-y-1 text-sm leading-6 text-gray-500">
+              <ol className="mt-4 space-y-2 text-sm leading-6 w-full text-gray-500">
                 {selectedDayMeetings.length > 0 ? (
                   selectedDayMeetings.map((meeting) => (
                     <Meeting meeting={meeting} key={meeting.id} />
@@ -246,16 +270,78 @@ function Meeting({ meeting }) {
   let startDateTime = parseISO(meeting.startDatetime);
   let endDateTime = parseISO(meeting.endDatetime);
 
+  //   const getPathLenght = (meeting) => {
+  //     console.log(`w-[${meeting.path}%]`);
+  //     return `w-[${meeting.path}%]`;
+  //   };
+
   return (
-    <li className="flex items-center px-4 py-2 space-x-4 group rounded-xl focus-within:bg-gray-100 hover:bg-gray-100">
+    <li className="flex items-center px-3 w-full py-4 bg-accentDesaturated rounded-md ">
       <img
         src={meeting.imageUrl}
         alt=""
-        className="flex-none w-10 h-10 rounded-full"
+        className={`flex-none w-8 h-8 rounded-full border-[1px] border-solid mr-2 ${
+          meeting.typeMeeting === "economy" && "border-economy"
+        } ${
+          meeting.typeMeeting === "entrepreneurship" &&
+          "border-entrepreneurship"
+        }
+        ${meeting.typeMeeting === "training" && "border-training"}
+        ${meeting.typeMeeting === "operation" && "border-operation"}`}
       />
-      <div className="flex-auto">
-        <p className="text-gray-900">{meeting.name}</p>
-        <p className="mt-0.5">
+
+      {/* scheda appuntamento */}
+      <div className="flex-auto text-accent">
+        <div className="flex justify-between">
+          {/* pallino più tipo appuntamento */}
+          <div className="flex items-center gap-1">
+            <div
+              className={`w-2 h-2 rounded-full ${
+                meeting.typeMeeting === "economy" && "bg-economy"
+              } ${
+                meeting.typeMeeting === "entrepreneurship" &&
+                "bg-entrepreneurship"
+              }
+        ${meeting.typeMeeting === "training" && "bg-training"}
+        ${meeting.typeMeeting === "operation" && "bg-operation"}`}
+            ></div>
+            {/* mette la prima lettera della parola maiuscola */}
+            <span className="text-xs">
+              {meeting.typeMeeting[0].toUpperCase() +
+                meeting.typeMeeting.substring(1)}
+            </span>
+          </div>
+          <div>
+            {" "}
+            <p className=" text-xs font-light">
+              <time dateTime={meeting.startDatetime}>
+                {format(startDateTime, "h:mm a")}
+              </time>{" "}
+              -{" "}
+              <time dateTime={meeting.endDatetime}>
+                {format(endDateTime, "h:mm a")}
+              </time>
+            </p>
+          </div>
+        </div>
+        {/* mette la prima lettera della parola maiuscola */}
+        <p className="font-semibold text-sm my-1">
+          {meeting.title[0].toUpperCase() + meeting.title.substring(1)}
+        </p>
+        {meeting.path && (
+          <div className="flex items-center gap-2">
+            {" "}
+            <span className="text-xs block">Percorso</span>
+            <div className=" bg-accentLight flex-1 h-2 rounded-md w-full">
+              {/* //!  width dinamica non funzionante */}
+              <div
+                className={String.raw`h-2 bg-accent rounded-md w-[${meeting.path}%]`}
+              ></div>
+            </div>
+          </div>
+        )}
+        {/* <p className="text-gray-900">{meeting.name}</p> */}
+        {/* <p className="mt-0.5">
           <time dateTime={meeting.startDatetime}>
             {format(startDateTime, "h:mm a")}
           </time>{" "}
@@ -263,9 +349,11 @@ function Meeting({ meeting }) {
           <time dateTime={meeting.endDatetime}>
             {format(endDateTime, "h:mm a")}
           </time>
-        </p>
+        </p> */}
       </div>
-      <Menu
+
+      {/* menu option */}
+      {/* <Menu
         as="div"
         className="relative opacity-0 focus-within:opacity-100 group-hover:opacity-100"
       >
@@ -279,7 +367,7 @@ function Meeting({ meeting }) {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-6 h-6"
+              className="w-6 h-6 text-accent"
             >
               <path
                 strokeLinecap="round"
@@ -330,7 +418,7 @@ function Meeting({ meeting }) {
             </div>
           </Menu.Items>
         </Transition>
-      </Menu>
+      </Menu> */}
     </li>
   );
 }
