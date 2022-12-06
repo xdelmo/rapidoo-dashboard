@@ -15,19 +15,19 @@ function App() {
 
   // hook per avere come default la sidebar aperta se la larghezza dello schermo è maggiore di 768px
   // cioè se è un desktop e non più un tablet
-  useEffect(() => {
-    function handleResize() {
-      console.log("resized to: ", window.innerWidth, "x", window.innerHeight);
-      if (window.innerWidth > 768) {
-        console.log("desktop");
-        setIsSidebarOpen(true);
-      } else {
-        setIsSidebarOpen(false);
-      }
-    }
+  // useEffect(() => {
+  //   function handleResize() {
+  //     console.log("resized to: ", window.innerWidth, "x", window.innerHeight);
+  //     if (window.innerWidth > 768) {
+  //       console.log("desktop");
+  //       setIsSidebarOpen(true);
+  //     } else {
+  //       setIsSidebarOpen(false);
+  //     }
+  //   }
 
-    window.addEventListener("resize", handleResize);
-  });
+  //   window.addEventListener("resize", handleResize);
+  // });
 
   return (
     <div className="App flex min-h-screen w-screen font-main">
