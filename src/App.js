@@ -8,6 +8,7 @@ import Calendar from "./components/Calendar";
 import Courses from "./components/Courses";
 import Contents from "./components/Contents";
 import Performance from "./components/Performance";
+import Footer from "./components/Footer";
 // import OverTitle from "./components/OverTitle";
 
 function App() {
@@ -65,8 +66,7 @@ function App() {
             <Contents />
           </div>
         </main>
-        {/* <footer id="footer" className="bg-primary py-7 px-4">
-        </footer> */}
+        <Footer />
       </div>
     </div>
   );
