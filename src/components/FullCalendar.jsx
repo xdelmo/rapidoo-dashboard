@@ -336,12 +336,13 @@ function Meeting({ meeting }) {
           <div>
             {" "}
             <p className=" text-xs font-light">
+              {/* format da 12 a 24 ore */}
               <time dateTime={meeting.startDatetime}>
-                {format(startDateTime, "h:mm a")}
+                {format(startDateTime, "HH:mm")}
               </time>{" "}
               -{" "}
               <time dateTime={meeting.endDatetime}>
-                {format(endDateTime, "h:mm a")}
+                {format(endDateTime, "HH:mm")}
               </time>
             </p>
           </div>
