@@ -16,6 +16,11 @@ import {
 } from "date-fns";
 import { Fragment, useState } from "react";
 import ReservationCard from "./ReservationCard";
+import { it } from "date-fns/locale";
+import setDefaultOptions from "date-fns/setDefaultOptions";
+// Set global locale:
+// let setDefaultOptions = require("date-fns/setDefaultOptions");
+setDefaultOptions({ locale: it });
 
 const meetings = [
   {
@@ -190,13 +195,13 @@ export default function Example() {
             {/* calendario */}
             {/* giorni settimana */}
             <div className="grid grid-cols-7 mt-10 text-xs leading-6 text-center text-gray-500">
-              <div>Dom</div>
               <div>Lun</div>
               <div>Mar</div>
               <div>Mer</div>
               <div>Gio</div>
               <div>Ven</div>
               <div>Sab</div>
+              <div>Dom</div>
             </div>
             <div className="grid grid-cols-7 mt-2 text-sm">
               {days.map((day, dayIdx) => (
@@ -445,12 +450,13 @@ function Meeting({ meeting }) {
   );
 }
 
+// calendario con inizio del mese responsivo partendo dal lunedì e non dalla domenica
 let colStartClasses = [
-  "",
+  "col-start-7",
+  "col-start-1",
   "col-start-2",
   "col-start-3",
   "col-start-4",
   "col-start-5",
   "col-start-6",
-  "col-start-7",
 ];
