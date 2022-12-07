@@ -124,7 +124,9 @@ function ReservationCard() {
                   />
                 </svg>
               ) : (
-                <p className="text-xs font-bold">Prenota</p>
+                <button>
+                  <p className="text-xs font-bold">Prenota</p>
+                </button>
               )}
             </div>
           </div>
