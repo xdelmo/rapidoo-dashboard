@@ -77,7 +77,7 @@ const meetings = [
     endDatetime: "2022-12-20T11:30",
     typeMeeting: "entrepreneurship",
     title: "Informatica e digitalizzazione",
-    path: 25,
+    path: "w-[10%]",
   },
   {
     id: 8,
@@ -88,7 +88,18 @@ const meetings = [
     endDatetime: "2022-12-13T14:30",
     typeMeeting: "economy",
     title: "Contabilità",
-    path: 70,
+    path: "w-[30%]",
+  },
+  {
+    id: 9,
+    name: "Dries Vincent",
+    imageUrl:
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    startDatetime: "2022-12-13T14:00",
+    endDatetime: "2022-12-13T14:30",
+    typeMeeting: "economy",
+    title: "Contabilità",
+    path: "w-[70%]",
   },
 ];
 
@@ -275,7 +286,9 @@ function Meeting({ meeting }) {
   // funzione per ottenere la percentuale del percorso
   // perchè Tailwind non permette l'uso di classi dinamiche all'interno degli stili
   const getPathLenght = (meeting) => {
-    return `w-[${meeting.path}%]`;
+    const pathLenght = `w-[${meeting.path}%]`;
+    console.log(pathLenght);
+    return pathLenght;
   };
 
   return (
@@ -340,9 +353,11 @@ function Meeting({ meeting }) {
               perchè Tailwind non permette l'uso di classi dinamiche all'interno degli
               stili */}
               <div
-                className={`${getPathLenght(
-                  meeting
-                )} h-2 bg-accent rounded-md `}
+                // className={`w-[${meeting.path}%] h-2 bg-accent rounded-md`}
+                // className={`${getPathLenght(meeting)} h-2 bg-accent rounded-md`}
+                //  ! NON è LA MIGLIORE IMPLEMENTAZIONE PERCHè DAL BACKEND NON MI ARRIVERà
+                //  ! MAI COME DATO RAW "w-[n%]"
+                className={`${meeting.path} h-2 bg-accent rounded-md`}
               ></div>
             </div>
           </div>
