@@ -223,7 +223,7 @@ export default function Example() {
                       !isEqual(day, selectedDay) &&
                         !isToday(day) &&
                         isSameMonth(day, firstDayCurrentMonth) &&
-                        "text-gray-900",
+                        "text-accent",
                       !isEqual(day, selectedDay) &&
                         !isToday(day) &&
                         !isSameMonth(day, firstDayCurrentMonth) &&
@@ -231,8 +231,9 @@ export default function Example() {
                       isEqual(day, selectedDay) && isToday(day) && "bg-red-500",
                       isEqual(day, selectedDay) &&
                         !isToday(day) &&
-                        " border-black border-[1px] border-solid text-black",
-                      !isEqual(day, selectedDay) && "hover:bg-gray-200",
+                        " border-accent border-[1px] border-solid text-black",
+                      !isEqual(day, selectedDay) &&
+                        "hover:bg-accentDesaturated",
                       (isEqual(day, selectedDay) || isToday(day)) &&
                         "font-semibold",
                       "mx-auto flex h-8 w-8 items-center justify-center rounded-full"
