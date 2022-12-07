@@ -61,6 +61,10 @@
   .grid-row-span-2 {
     grid-row: span 2;
   }
+  /* blocco si espande su 2 righe */
+  .grid-row-span-4 {
+    grid-row: span 4;
+  }
 
   .oval {
     height: 16px;

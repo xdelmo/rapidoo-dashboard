@@ -48,7 +48,8 @@ function App() {
         <main className="bg-accentDesaturated py-7 px-4">
           <User />
           {/* griglia */}
-          <div className="card-grid py-7 grid-flow-dense">
+          {/* DESKTOP GRID */}
+          <div className=" hidden xl:card-grid py-7 grid-flow-dense">
             <Badge />
             <div className="grid-col-span-2">
               <GeneralStats />
@@ -64,6 +65,35 @@ function App() {
               <Performance />
             </div>
             <Contents />
+          </div>
+
+          {/* griglia */}
+          {/* MOBILE GRID */}
+          <div className="card-grid py-7 xl:hidden ">
+            <Badge />
+            <div className="grid-col-span-2">
+              <GeneralStats />
+            </div>
+            {/* le 2 prime colonne sinistre*/}
+            <div className="grid-col-span-2">
+              <div className="grid-col-span-2 grid-row-span-2">
+                <Calendar />
+              </div>
+              <div className="grid-col-span-2 grid-col-span-2 mt-6">
+                <Performance />
+              </div>
+            </div>
+            {/* solo colonna destra */}
+            <div className=" grid-col-span-1 mb-6">
+              {" "}
+              <RequestAdvice />{" "}
+              <div className=" grid-row-span-2 mt-6">
+                <Courses />
+                <div className="mt-6">
+                  <Contents />
+                </div>
+              </div>{" "}
+            </div>
           </div>
         </main>
         <Footer />
