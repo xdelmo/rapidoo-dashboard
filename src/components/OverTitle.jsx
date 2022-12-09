@@ -22,7 +22,7 @@ function OverTitle(props) {
           </svg>
         </button>
       </div>
-      <hr className="h-[2px] text-accent" />
+      <div className=" border-solid border-[1px] border-b-accent"></div>
     </div>
   );
 }
