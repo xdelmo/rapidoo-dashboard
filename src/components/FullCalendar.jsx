@@ -4,6 +4,7 @@ import {
   add,
   eachDayOfInterval,
   endOfMonth,
+  endOfWeek,
   format,
   getDay,
   isEqual,
@@ -136,7 +137,9 @@ export default function Example() {
 
   let days = eachDayOfInterval({
     start: firstDayCurrentMonth,
-    end: endOfMonth(firstDayCurrentMonth),
+    // endOfWeek funzione per lasciare visibili nel calendario anche i giorni
+    // dell'ultima settimana nonostante appartengano al mese successivo
+    end: endOfWeek(endOfMonth(firstDayCurrentMonth)),
   });
 
   function previousMonth() {
