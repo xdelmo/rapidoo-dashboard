@@ -108,6 +108,22 @@ const meetings = [
   },
 ];
 
+// oggetto con date disponibili per la formazione
+const availableDaysMeetings = [
+  {
+    id: 1,
+    date: "2022-12-13",
+  },
+  {
+    id: 2,
+    date: "2022-12-25",
+  },
+  {
+    id: 3,
+    date: "2022-12-4",
+  },
+];
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
