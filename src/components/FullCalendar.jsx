@@ -20,6 +20,8 @@ import { Fragment, useState } from "react";
 import ReservationCard from "./ReservationCard";
 import { it } from "date-fns/locale";
 import setDefaultOptions from "date-fns/setDefaultOptions";
+import React from "react";
+import ColoredCircle from "./ColoredCircle";
 // Set global locale:
 // let setDefaultOptions = require("date-fns/setDefaultOptions");
 setDefaultOptions({ locale: it });
@@ -32,6 +34,8 @@ const meetings = [
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     startDatetime: "2022-05-11T13:00",
     endDatetime: "2022-05-11T14:30",
+    typeMeeting: "entrepreneurship",
+    title: "Informatica e digitalizzazione",
   },
   {
     id: 2,
@@ -40,6 +44,9 @@ const meetings = [
       "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     startDatetime: "2022-05-20T09:00",
     endDatetime: "2022-05-20T11:30",
+    typeMeeting: "economy",
+    title: "Contabilità",
+    path: "w-[30%]",
   },
   {
     id: 3,
@@ -48,6 +55,8 @@ const meetings = [
       "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     startDatetime: "2022-05-20T17:00",
     endDatetime: "2022-05-20T18:30",
+    typeMeeting: "economy",
+    title: "Contabilità",
   },
   {
     id: 4,
@@ -56,14 +65,18 @@ const meetings = [
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     startDatetime: "2022-06-09T13:00",
     endDatetime: "2022-06-09T14:30",
+    typeMeeting: "entrepreneurship",
+    title: "Informatica e digitalizzazione",
   },
   {
     id: 5,
     name: "Michael Foster",
     imageUrl:
       "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    startDatetime: "2022-05-13T14:00",
-    endDatetime: "2022-05-13T14:30",
+    startDatetime: "2022-12-04T14:00",
+    endDatetime: "2022-12-04T14:30",
+    typeMeeting: "training",
+    title: "Formazione aziendale",
   },
   {
     id: 6,
@@ -159,6 +172,7 @@ export default function Example() {
     isSameDay(parseISO(meeting.startDatetime), selectedDay)
   );
 
+  // const [meetingType, setMeetingType] = React.useState("");
   return (
     <div className="">
       <div className="w-full">
@@ -263,8 +277,6 @@ export default function Example() {
                   >
                     {/* cerchio per avere colpo d'occhio i giorni in cui è possibile prenotarsi 
                     per un appuntamento */}
-                    {/* //! CRASHA quando si clicca sui giorni di Maggio */}
-
                     <div className="absolute">
                       {availableDaysMeetings.some((availableDaysMeeting) =>
                         isSameDay(parseISO(availableDaysMeeting.date), day)
@@ -277,12 +289,22 @@ export default function Example() {
                     </time>
                   </button>
                   {/* pallino per vedere se c'è un meeting già prenotato */}
-                  <div className="w-2 h-2 mx-auto mt-1">
-                    {meetings.some((meeting) =>
+                  <div className=" h-2 mx-auto mt-1 gap-[1px] flex items-center justify-center">
+                    {/* {meetings.some((meeting) =>
                       isSameDay(parseISO(meeting.startDatetime), day)
                     ) && (
                       <div className="w-2 h-2  rounded-full bg-sky-500 border-[1px] border-solid border-white"></div>
-                    )}
+                    )} */}
+                    {/* //! IL PALLINO deve essere uno solo per ogni tipo di appuntamento,
+                        //! se ci sono 2 economy allora deve essere visibile un solo pallino celeste  */}
+                    {meetings.map((meeting) => {
+                      if (isSameDay(parseISO(meeting.startDatetime), day)) {
+                        /* return meeting.id; */
+                        return (
+                          <ColoredCircle typeMeeting={meeting.typeMeeting} />
+                        );
+                      }
+                    })}
                   </div>
                 </div>
               ))}
