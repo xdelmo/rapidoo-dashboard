@@ -231,7 +231,7 @@ export default function Example() {
                       isEqual(day, selectedDay) && isToday(day) && "bg-red-500",
                       isEqual(day, selectedDay) &&
                         !isToday(day) &&
-                        " border-accent border-[1px] border-solid text-black",
+                        " bg-accent border-accent border-[1px] border-solid text-white",
                       !isEqual(day, selectedDay) &&
                         "hover:bg-accentDesaturated",
                       (isEqual(day, selectedDay) || isToday(day)) &&
