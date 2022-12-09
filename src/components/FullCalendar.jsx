@@ -122,7 +122,7 @@ const availableDaysMeetings = [
   },
   {
     id: 3,
-    date: "2022-12-4",
+    date: "2022-12-04",
   },
 ];
 
@@ -258,19 +258,30 @@ export default function Example() {
                         "hover:bg-accentDesaturated",
                       (isEqual(day, selectedDay) || isToday(day)) &&
                         "font-semibold",
-                      "mx-auto flex h-8 w-8 items-center justify-center rounded-full"
+                      "mx-auto flex h-8 w-8 items-center justify-center relative rounded-full"
                     )}
                   >
+                    {/* cerchio per avere colpo d'occhio i giorni in cui è possibile prenotarsi 
+                    per un appuntamento */}
+                    {/* //! CRASHA quando si clicca sui giorni di Maggio */}
+
+                    <div className="absolute">
+                      {availableDaysMeetings.some((availableDaysMeeting) =>
+                        isSameDay(parseISO(availableDaysMeeting.date), day)
+                      ) && (
+                        <div className=" h-8 w-8 mx-auto rounded-full border-accent border-[1px] border-solid "></div>
+                      )}
+                    </div>
                     <time dateTime={format(day, "yyyy-MM-dd")}>
                       {format(day, "d")}
                     </time>
                   </button>
-
-                  <div className="w-1 h-1 mx-auto mt-1">
+                  {/* pallino per vedere se c'è un meeting già prenotato */}
+                  <div className="w-2 h-2 mx-auto mt-1">
                     {meetings.some((meeting) =>
                       isSameDay(parseISO(meeting.startDatetime), day)
                     ) && (
-                      <div className="w-1 h-1 rounded-full bg-sky-500"></div>
+                      <div className="w-2 h-2  rounded-full bg-sky-500 border-[1px] border-solid border-white"></div>
                     )}
                   </div>
                 </div>
