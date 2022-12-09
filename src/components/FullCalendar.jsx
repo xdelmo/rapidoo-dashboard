@@ -14,6 +14,7 @@ import {
   parse,
   parseISO,
   startOfToday,
+  startOfWeek,
 } from "date-fns";
 import { Fragment, useState } from "react";
 import ReservationCard from "./ReservationCard";
@@ -136,7 +137,9 @@ export default function Example() {
   let firstDayCurrentMonth = parse(currentMonth, "MMM-yyyy", new Date());
 
   let days = eachDayOfInterval({
-    start: firstDayCurrentMonth,
+    // startOfWeek funzione per lasciare visibili nel calendario anche i giorni
+    // dell'ultima settimana nonostante appartengano al mese precedente
+    start: startOfWeek(firstDayCurrentMonth),
     // endOfWeek funzione per lasciare visibili nel calendario anche i giorni
     // dell'ultima settimana nonostante appartengano al mese successivo
     end: endOfWeek(endOfMonth(firstDayCurrentMonth)),
