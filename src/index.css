@@ -71,4 +71,32 @@
     width: 16px;
     border-radius: 100%;
   }
+
+  input[type="checkbox"] {
+    appearance: none;
+  }
+
+  /* cambio colori se un li ha un input checked */
+  li:has(input:checked) {
+    color: white;
+    background-color: #171e25;
+  }
+
+  /* cambio border radius se il primo li ha l'input checked */
+  li:has(input:checked):first-child {
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+  }
+
+  /* cambio border radius se l'ultimo li ha l'input checked */
+  li:has(input:checked):last-child {
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+
+  /* cambio style alla spunta quando l'input è checked */
+  label:has(input:checked) + svg {
+    display: block;
+    color: #5e5873;
+  }
 }
