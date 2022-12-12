@@ -127,7 +127,7 @@ function Filter({ meetings, handleClick }) {
       ${category === "operation" && "bg-operation"} w-2 h-2 rounded-full`}
             ></div>
             {/* checkbox categoria */}
-            <label className="cursor-pointer">
+            <label className="text-sm cursor-pointer">
               <input
                 // onChange={onFilterChange}
 
