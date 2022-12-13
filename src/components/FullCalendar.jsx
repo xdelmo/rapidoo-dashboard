@@ -22,6 +22,7 @@ import { it } from "date-fns/locale";
 import setDefaultOptions from "date-fns/setDefaultOptions";
 import React from "react";
 import ColoredCircle from "./ColoredCircle";
+import Meeting from "./Meeting";
 // Set global locale:
 // let setDefaultOptions = require("date-fns/setDefaultOptions");
 setDefaultOptions({ locale: it });
@@ -46,7 +47,22 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Example({ meetings }) {
+export default function FullCalendar({ meetings, newFilters }) {
+  console.log(
+    "🚀 ~ file: FullCalendar.jsx:50 ~ FullCalendar ~ newFilters",
+    newFilters
+  );
+
+  const applyFilters = (newFilters) => {
+    let filterString = "";
+    return filterString;
+
+    //  else {
+    //   newFilters.forEach((filter) => {});
+    // }
+  };
+  console.log("apply newfilters", applyFilters(newFilters));
+
   let today = startOfToday();
   let [selectedDay, setSelectedDay] = useState(today);
   let [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));
@@ -79,7 +95,7 @@ export default function Example({ meetings }) {
   return (
     <div className="">
       <div className="w-full">
-        <div className="flex flex-col xl:flex-row justify-between gap-10">
+        <div className="flex flex-col justify-between gap-10 xl:flex-row">
           <div className="flex-1">
             <div className="flex justify-between p-5">
               {/* mese precedente */}
@@ -105,7 +121,7 @@ export default function Example({ meetings }) {
                 </svg>
               </button>
               {/* mese + anno attuale */}
-              <h2 className=" font-semibold text-gray-900">
+              <h2 className="font-semibold text-gray-900 ">
                 {format(firstDayCurrentMonth, "MMMM yyyy")}
               </h2>
               {/* prossimo mese */}
@@ -215,9 +231,9 @@ export default function Example({ meetings }) {
           </div>
 
           {/* recap appuntamenti */}
-          <section className=" flex-1">
-            <div className="flex flex-col justify-center items-center">
-              <h2 className="font-semibold text-gray-900 xl:p-5 py-5 self-start">
+          <section className="flex-1 ">
+            <div className="flex flex-col items-center justify-center">
+              <h2 className="self-start py-5 font-semibold text-gray-900 xl:p-5">
                 <time dateTime={format(today, "dd-MM-yyyy")}>
                   {format(today, "dd MMMM yyyy")}
                 </time>
@@ -225,11 +241,32 @@ export default function Example({ meetings }) {
                   {format(selectedDay, "MMM dd, yyy")}
                 </time> */}
               </h2>
-              <ol className="mt-4 space-y-2 text-sm leading-6 w-full text-gray-500">
+              <ol className="w-full mt-4 space-y-2 text-sm leading-6 text-gray-500">
                 {selectedDayMeetings.length > 0 ? (
-                  selectedDayMeetings.map((meeting) => (
-                    <Meeting meeting={meeting} key={meeting.id} />
-                  ))
+                  selectedDayMeetings
+                    .filter((meeting) => {
+                      if (newFilters.length < 1) {
+                        {
+                          /* se il newFilters è vuoto allora non filtra nulla */
+                        }
+                        return meeting.typeMeeting !== "";
+                      } else {
+                        {
+                          /* altrimenti per ogni tipo in newFilters */
+                        }
+                        for (let tipo in newFilters) {
+                          {
+                            /* se il typeMeeting di ogni meeting è incluso nell'array dei filtri
+                            allora ritorna true e lo considera nel mapping successivo */
+                          }
+                          if (newFilters[tipo].includes(meeting.typeMeeting))
+                            return true;
+                        }
+                      }
+                    })
+                    .map((meeting) => {
+                      return <Meeting meeting={meeting} key={meeting.id} />;
+                    })
                 ) : (
                   <p className="xl:pl-5">Nessun impegno oggi</p>
                 )}
@@ -240,173 +277,6 @@ export default function Example({ meetings }) {
         </div>
       </div>
     </div>
-  );
-}
-
-function Meeting({ meeting }) {
-  let startDateTime = parseISO(meeting.startDatetime);
-  let endDateTime = parseISO(meeting.endDatetime);
-
-  // funzione per ottenere la percentuale del percorso
-  // perchè Tailwind non permette l'uso di classi dinamiche all'interno degli stili
-  const getPathLenght = (meeting) => {
-    const pathLenght = `w-[${meeting.path}%]`;
-    console.log(pathLenght);
-    return pathLenght;
-  };
-
-  return (
-    <li className="flex items-center px-3 w-full py-4 bg-accentDesaturated rounded-md ">
-      <img
-        src={meeting.imageUrl}
-        alt=""
-        className={`flex-none w-8 h-8 rounded-full border-[1px] border-solid mr-2 ${
-          meeting.typeMeeting === "economy" && "border-economy"
-        } ${
-          meeting.typeMeeting === "entrepreneurship" &&
-          "border-entrepreneurship"
-        }
-        ${meeting.typeMeeting === "training" && "border-training"}
-        ${meeting.typeMeeting === "operation" && "border-operation"}`}
-      />
-
-      {/* scheda appuntamento */}
-      <div className="flex-auto text-accent">
-        <div className="flex justify-between">
-          {/* pallino più tipo appuntamento */}
-          <div className="flex items-center gap-1">
-            <div
-              className={`w-2 h-2 rounded-full ${
-                meeting.typeMeeting === "economy" && "bg-economy"
-              } ${
-                meeting.typeMeeting === "entrepreneurship" &&
-                "bg-entrepreneurship"
-              }
-        ${meeting.typeMeeting === "training" && "bg-training"}
-        ${meeting.typeMeeting === "operation" && "bg-operation"}`}
-            ></div>
-            {/* mette la prima lettera della parola maiuscola */}
-            <span className="text-xs">
-              {meeting.typeMeeting[0].toUpperCase() +
-                meeting.typeMeeting.substring(1)}
-            </span>
-          </div>
-          <div>
-            {" "}
-            <p className=" text-xs font-light">
-              {/* format da 12 a 24 ore */}
-              <time dateTime={meeting.startDatetime}>
-                {format(startDateTime, "HH:mm")}
-              </time>{" "}
-              -{" "}
-              <time dateTime={meeting.endDatetime}>
-                {format(endDateTime, "HH:mm")}
-              </time>
-            </p>
-          </div>
-        </div>
-        {/* mette la prima lettera della parola maiuscola */}
-        <p className="font-semibold text-sm my-1">
-          {meeting.title[0].toUpperCase() + meeting.title.substring(1)}
-        </p>
-        {meeting.path && (
-          <div className="flex items-center gap-2">
-            {" "}
-            <span className="text-xs block">Percorso</span>
-            <div className=" bg-accentLight flex-1 h-2 rounded-md w-full">
-              {/* funzione per ottenere la percentuale del percorso
-              perchè Tailwind non permette l'uso di classi dinamiche all'interno degli
-              stili */}
-              <div
-                // className={`w-[${meeting.path}%] h-2 bg-accent rounded-md`}
-                // className={`${getPathLenght(meeting)} h-2 bg-accent rounded-md`}
-                //  ! NON è LA MIGLIORE IMPLEMENTAZIONE PERCHè DAL BACKEND NON MI ARRIVERà
-                //  ! MAI COME DATO RAW "w-[n%]"
-                className={`${meeting.path} h-2 bg-accent rounded-md`}
-              ></div>
-            </div>
-          </div>
-        )}
-        {/* <p className="text-gray-900">{meeting.name}</p> */}
-        {/* <p className="mt-0.5">
-          <time dateTime={meeting.startDatetime}>
-            {format(startDateTime, "h:mm a")}
-          </time>{" "}
-          -{" "}
-          <time dateTime={meeting.endDatetime}>
-            {format(endDateTime, "h:mm a")}
-          </time>
-        </p> */}
-      </div>
-
-      {/* menu option */}
-      {/* <Menu
-        as="div"
-        className="relative opacity-0 focus-within:opacity-100 group-hover:opacity-100"
-      >
-        <div>
-          <Menu.Button className="-m-2 flex items-center rounded-full p-1.5 text-gray-500 hover:text-gray-600">
-            <span className="sr-only">Open options</span>
-
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6 text-accent"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"
-              />
-            </svg>
-          </Menu.Button>
-        </div>
-
-        <Transition
-          as={Fragment}
-          enter="transition ease-out duration-100"
-          enterFrom="transform opacity-0 scale-95"
-          enterTo="transform opacity-100 scale-100"
-          leave="transition ease-in duration-75"
-          leaveFrom="transform opacity-100 scale-100"
-          leaveTo="transform opacity-0 scale-95"
-        >
-          <Menu.Items className="absolute right-0 z-10 mt-2 origin-top-right bg-white rounded-md shadow-lg w-36 ring-1 ring-black ring-opacity-5 focus:outline-none">
-            <div className="py-1">
-              <Menu.Item>
-                {({ active }) => (
-                  <a
-                    href="#"
-                    className={classNames(
-                      active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                      "block px-4 py-2 text-sm"
-                    )}
-                  >
-                    Edit
-                  </a>
-                )}
-              </Menu.Item>
-              <Menu.Item>
-                {({ active }) => (
-                  <a
-                    href="#"
-                    className={classNames(
-                      active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                      "block px-4 py-2 text-sm"
-                    )}
-                  >
-                    Cancel
-                  </a>
-                )}
-              </Menu.Item>
-            </div>
-          </Menu.Items>
-        </Transition>
-      </Menu> */}
-    </li>
   );
 }
 

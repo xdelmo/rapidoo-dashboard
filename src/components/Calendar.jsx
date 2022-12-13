@@ -103,6 +103,11 @@ function Calendar() {
   const handleClick = (e) => {
     SetIsFilterShow((prevState) => !prevState);
   };
+
+  //! stato ulteriore perchè non riesco a mappare l'oggetto Set() anche avendolo convertito in array
+  const [newFilters, setNewFilters] = React.useState(
+    JSON.parse(localStorage.getItem("filters")) || []
+  );
   return (
     <div className="h-full p-5 rounded-md bg-light text-accent">
       {/* blocco superiore */}
@@ -127,7 +132,12 @@ function Calendar() {
             />
           </svg>
         ) : (
-          <Filter meetings={meetings} handleClick={handleClick} />
+          <Filter
+            meetings={meetings}
+            handleClick={handleClick}
+            newFilters={newFilters}
+            setNewFilters={setNewFilters}
+          />
         )}
       </div>
 
@@ -135,7 +145,11 @@ function Calendar() {
       <div>
         {/* calendario */}
         <div>
-          <FullCalendar meetings={meetings} />
+          <FullCalendar
+            meetings={meetings}
+            newFilters={newFilters}
+            setNewFilters={setNewFilters}
+          />
         </div>
         {/* appuntamenti */}
       </div>

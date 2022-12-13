@@ -1,6 +1,6 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 
-function Filter({ meetings, handleClick }) {
+function Filter({ meetings, handleClick, newFilters, setNewFilters }) {
   // categorie appuntamenti
   const categories = ["entrepreneurship", "economy", "training", "operation"];
 
@@ -37,8 +37,14 @@ function Filter({ meetings, handleClick }) {
   //   [setState]
   // );
 
-  //! stato ulteriore perchè non riesco a mappare l'oggetto Set() anche avendolo convertito in array
-  const [newFilters, setNewFilters] = React.useState([]);
+  // //! stato ulteriore perchè non riesco a mappare l'oggetto Set() anche avendolo convertito in array
+  // const [newFilters, setNewFilters] = React.useState(
+  //   JSON.parse(localStorage.getItem("filters")) || []
+  // );
+
+  useEffect(() => {
+    localStorage.setItem("filters", JSON.stringify(newFilters));
+  }, [newFilters]);
 
   // funzione per aggiornare le categorie selezionate nella tendina
   const handleChange = (event) => {
@@ -61,7 +67,7 @@ function Filter({ meetings, handleClick }) {
 
   return (
     <section
-      className="filters absolute top-1 right-0 z-20 max-w-[281px] lg:max-w-none"
+      className="filters absolute top-1 right-0 z-20 max-w-[389px] lg:w-[492px] "
       aria-labelledby="filters-header"
     >
       {/* div bianco contenente le categorie */}
