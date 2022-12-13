@@ -1,6 +1,14 @@
 import React, { useState, useCallback, useEffect } from "react";
+import SelectedFilters from "./SelectedFilters";
 
-function Filter({ meetings, handleClick, newFilters, setNewFilters }) {
+function Filter({
+  meetings,
+  handleClick,
+  newFilters,
+  setNewFilters,
+  hasFiltersSaved,
+  handleFilterSaved,
+}) {
   // categorie appuntamenti
   const categories = ["entrepreneurship", "economy", "training", "operation"];
 
@@ -42,9 +50,9 @@ function Filter({ meetings, handleClick, newFilters, setNewFilters }) {
   //   JSON.parse(localStorage.getItem("filters")) || []
   // );
 
-  useEffect(() => {
-    localStorage.setItem("filters", JSON.stringify(newFilters));
-  }, [newFilters]);
+  // useEffect(() => {
+  //   localStorage.setItem("filters", JSON.stringify(newFilters));
+  // }, [newFilters]);
 
   // funzione per aggiornare le categorie selezionate nella tendina
   const handleChange = (event) => {
@@ -73,48 +81,16 @@ function Filter({ meetings, handleClick, newFilters, setNewFilters }) {
       {/* div bianco contenente le categorie */}
       <div className="bg-white border-[1px] border-solid border-accentLight rounded-md px-4 py-2 mb-2 text-xs flex items-center justify-between">
         {/* lista delle categorie scelte dall'utente */}
-        <ul className="flex flex-wrap gap-1">
-          {newFilters.map((newFilter) => {
-            return (
-              <li
-                key={newFilter}
-                className={`${newFilter === "economy" && "bg-economy"} ${
-                  newFilter === "entrepreneurship" && "bg-entrepreneurship"
-                }
-      ${newFilter === "training" && "bg-training"}
-      ${
-        newFilter === "operation" && "bg-operation"
-      } flex items-center gap-2 px-2 py-1 text-white rounded-full`}
-              >
-                {/* nome categoria */}
-                <span>
-                  {newFilter[0].toUpperCase() + newFilter.substring(1)}
-                </span>
-                {/* icona x */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="inline w-3 h-3"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </li>
-            );
-          })}
-        </ul>
-        <span
+        <SelectedFilters newFilters={newFilters} />
+        <button
           className="ml-4 font-semibold cursor-pointer"
-          onClick={handleClick}
+          onClick={() => {
+            handleClick();
+            handleFilterSaved();
+          }}
         >
           Salva
-        </span>
+        </button>
       </div>
 
       {/* lista di scelta delle categorie tramite checkbox */}

@@ -1,6 +1,7 @@
 import React from "react";
 import Filter from "./Filter";
 import FullCalendar from "./FullCalendar";
+import SelectedFilters from "./SelectedFilters";
 
 function Calendar() {
   const meetings = [
@@ -100,20 +101,34 @@ function Calendar() {
     },
   ];
   const [isFilterShow, SetIsFilterShow] = React.useState(false);
-  const handleClick = (e) => {
+  const handleClick = () => {
     SetIsFilterShow((prevState) => !prevState);
   };
 
   //! stato ulteriore perchè non riesco a mappare l'oggetto Set() anche avendolo convertito in array
-  const [newFilters, setNewFilters] = React.useState(
-    JSON.parse(localStorage.getItem("filters")) || []
-  );
+  // const [newFilters, setNewFilters] = React.useState(
+  //   JSON.parse(localStorage.getItem("filters")) || []
+  // );
+  const [newFilters, setNewFilters] = React.useState([]);
+
+  // stato per mostrare i filtri salvati sopra il calendario
+  const [hasFiltersSaved, SetHasFiltersSaved] = React.useState(false);
+  const handleFilterSaved = () => {
+    SetHasFiltersSaved(true);
+  };
+
   return (
     <div className="h-full p-5 rounded-md bg-light text-accent">
       {/* blocco superiore */}
       <div className="relative flex items-center justify-between mb-5">
         {/* titolo */}
         <h2 className="mb-2 text-lg font-semibold">Calendario</h2>
+        {/* lista categorie scelte dopo aver cliccato sul bottone salva */}
+        {hasFiltersSaved && (
+          <div className="bg-white ml-auto rounded-md text-xs flex items-center justify-between ">
+            <SelectedFilters newFilters={newFilters} />
+          </div>
+        )}
         {/* icona filtraggio */}
         {!isFilterShow ? (
           <svg
@@ -122,7 +137,9 @@ function Calendar() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className=" h-4 text-[#c7c8d3] hover:text-accent cursor-pointer"
+            className={`${
+              newFilters.length > 0 ? "text-accent" : "text-[#c7c8d3]"
+            } h-4  hover:text-accent cursor-pointer ml-1`}
             onClick={handleClick}
           >
             <path
@@ -137,6 +154,8 @@ function Calendar() {
             handleClick={handleClick}
             newFilters={newFilters}
             setNewFilters={setNewFilters}
+            hasFiltersSaved={hasFiltersSaved}
+            handleFilterSaved={handleFilterSaved}
           />
         )}
       </div>
