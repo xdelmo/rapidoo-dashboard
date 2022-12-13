@@ -8,15 +8,12 @@ function Filter({
   setNewFilters,
   hasFiltersSaved,
   handleFilterSaved,
+  state,
 }) {
   // categorie appuntamenti
   const categories = ["entrepreneurship", "economy", "training", "operation"];
 
   // stato per filtrare i meetings per categoria
-  const [state, setState] = useState({
-    newMeetings: meetings,
-    filters: new Set(),
-  });
 
   // const handleFilterChange = useCallback(
   //   (event) => {
@@ -75,13 +72,17 @@ function Filter({
 
   return (
     <section
-      className="filters absolute top-1 right-0 z-20 max-w-[389px] lg:w-[492px] "
+      className="filters absolute top-1 right-0 z-20 "
       aria-labelledby="filters-header"
     >
       {/* div bianco contenente le categorie */}
       <div className="bg-white border-[1px] border-solid border-accentLight rounded-md px-4 py-2 mb-2 text-xs flex items-center justify-between">
         {/* lista delle categorie scelte dall'utente */}
-        <SelectedFilters newFilters={newFilters} />
+        <SelectedFilters
+          newFilters={newFilters}
+          setNewFilters={setNewFilters}
+          state={state}
+        />
         <button
           className="ml-4 font-semibold cursor-pointer"
           onClick={() => {

@@ -117,6 +117,11 @@ function Calendar() {
     SetHasFiltersSaved(true);
   };
 
+  const [state, setState] = React.useState({
+    newMeetings: meetings,
+    filters: new Set(),
+  });
+
   return (
     <div className="h-full p-5 rounded-md bg-light text-accent">
       {/* blocco superiore */}
@@ -126,7 +131,11 @@ function Calendar() {
         {/* lista categorie scelte dopo aver cliccato sul bottone salva */}
         {hasFiltersSaved && (
           <div className="bg-white ml-auto rounded-md text-xs flex items-center justify-between ">
-            <SelectedFilters newFilters={newFilters} />
+            <SelectedFilters
+              newFilters={newFilters}
+              state={state}
+              setNewFilters={setNewFilters}
+            />
           </div>
         )}
         {/* icona filtraggio */}
@@ -156,6 +165,7 @@ function Calendar() {
             setNewFilters={setNewFilters}
             hasFiltersSaved={hasFiltersSaved}
             handleFilterSaved={handleFilterSaved}
+            state={state}
           />
         )}
       </div>
