@@ -35,7 +35,7 @@ const availableDaysMeetings = [
   },
   {
     id: 2,
-    date: "2022-12-25",
+    date: "2022-12-20",
   },
   {
     id: 3,
