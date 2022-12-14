@@ -250,7 +250,7 @@ export default function FullCalendar({ meetings, newFilters }) {
                         }
                       })}
                       {filteredColoredCircle.length > 0 && (
-                        <div className="flex p-[4px] -space-x-1 gap-1 items-center justify-center bg-white -mt-3 z-10 rounded-full">
+                        <div className="flex  -space-x-2 gap-1 items-center justify-center -mt-4 z-10">
                           {filteredColoredCircle
                             .filter((color) => {
                               if (newFilters.length < 1) {
@@ -266,7 +266,11 @@ export default function FullCalendar({ meetings, newFilters }) {
                                 }
                             })
                             .map((color) => {
-                              return <ColoredCircle typeMeeting={color} />;
+                              return (
+                                <div className=" p-[2px]  bg-white z-10 rounded-full">
+                                  <ColoredCircle typeMeeting={color} />
+                                </div>
+                              );
                             })}
                         </div>
                       )}
