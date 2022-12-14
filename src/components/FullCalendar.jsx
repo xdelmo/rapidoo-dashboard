@@ -92,6 +92,9 @@ export default function FullCalendar({ meetings, newFilters }) {
   );
 
   // const [meetingType, setMeetingType] = React.useState("");
+
+  // const [array, setArray] = React.useState([]);
+  let filteredColoredCircle = [];
   return (
     <div className="">
       <div className="w-full">
@@ -159,74 +162,104 @@ export default function FullCalendar({ meetings, newFilters }) {
               <div>Dom</div>
             </div>
             <div className="grid grid-cols-7 mt-2 text-sm">
-              {days.map((day, dayIdx) => (
-                <div
-                  key={day.toString()}
-                  className={classNames(
-                    dayIdx === 0 && colStartClasses[getDay(day)],
-                    "py-1.5"
-                  )}
-                >
-                  <button
-                    type="button"
-                    onClick={() => setSelectedDay(day)}
+              {days.map((day, dayIdx) => {
+                filteredColoredCircle = [];
+                return (
+                  <div
+                    key={day.toString()}
                     className={classNames(
-                      isEqual(day, selectedDay) && "text-white",
-                      !isEqual(day, selectedDay) &&
-                        isToday(day) &&
-                        "text-red-500",
-                      !isEqual(day, selectedDay) &&
-                        !isToday(day) &&
-                        isSameMonth(day, firstDayCurrentMonth) &&
-                        "text-accent",
-                      !isEqual(day, selectedDay) &&
-                        !isToday(day) &&
-                        !isSameMonth(day, firstDayCurrentMonth) &&
-                        "text-gray-400",
-                      isEqual(day, selectedDay) && isToday(day) && "bg-red-500",
-                      isEqual(day, selectedDay) &&
-                        !isToday(day) &&
-                        " bg-accent border-accent border-[1px] border-solid text-white",
-                      !isEqual(day, selectedDay) &&
-                        "hover:bg-accentDesaturated",
-                      (isEqual(day, selectedDay) || isToday(day)) &&
-                        "font-semibold",
-                      "mx-auto flex h-8 w-8 items-center justify-center relative rounded-full"
+                      dayIdx === 0 && colStartClasses[getDay(day)],
+                      "py-1.5"
                     )}
                   >
-                    {/* cerchio per avere colpo d'occhio i giorni in cui è possibile prenotarsi 
-                    per un appuntamento */}
-                    <div className="absolute">
-                      {availableDaysMeetings.some((availableDaysMeeting) =>
-                        isSameDay(parseISO(availableDaysMeeting.date), day)
-                      ) && (
-                        <div className=" h-8 w-8 mx-auto rounded-full border-accent border-[1px] border-solid "></div>
+                    <button
+                      type="button"
+                      onClick={() => setSelectedDay(day)}
+                      className={classNames(
+                        isEqual(day, selectedDay) && "text-white",
+                        !isEqual(day, selectedDay) &&
+                          isToday(day) &&
+                          "text-red-500",
+                        !isEqual(day, selectedDay) &&
+                          !isToday(day) &&
+                          isSameMonth(day, firstDayCurrentMonth) &&
+                          "text-accent",
+                        !isEqual(day, selectedDay) &&
+                          !isToday(day) &&
+                          !isSameMonth(day, firstDayCurrentMonth) &&
+                          "text-gray-400",
+                        isEqual(day, selectedDay) &&
+                          isToday(day) &&
+                          "bg-red-500",
+                        isEqual(day, selectedDay) &&
+                          !isToday(day) &&
+                          " bg-accent border-accent border-[1px] border-solid text-white",
+                        !isEqual(day, selectedDay) &&
+                          "hover:bg-accentDesaturated",
+                        (isEqual(day, selectedDay) || isToday(day)) &&
+                          "font-semibold",
+                        "mx-auto flex h-8 w-8 items-center justify-center relative rounded-full"
                       )}
-                    </div>
-                    <time dateTime={format(day, "yyyy-MM-dd")}>
-                      {format(day, "d")}
-                    </time>
-                  </button>
-                  {/* pallino per vedere se c'è un meeting già prenotato */}
-                  <div className=" h-2 mx-auto mt-1 gap-[1px] flex items-center justify-center">
-                    {/* {meetings.some((meeting) =>
+                    >
+                      {/* cerchio per avere colpo d'occhio i giorni in cui è possibile prenotarsi 
+                    per un appuntamento */}
+                      <div className="absolute">
+                        {availableDaysMeetings.some((availableDaysMeeting) =>
+                          isSameDay(parseISO(availableDaysMeeting.date), day)
+                        ) && (
+                          <div className=" h-8 w-8 mx-auto rounded-full border-accent border-[1px] border-solid "></div>
+                        )}
+                      </div>
+                      <time dateTime={format(day, "yyyy-MM-dd")}>
+                        {format(day, "d")}
+                      </time>
+                    </button>
+                    {/* pallino per vedere se c'è un meeting già prenotato */}
+                    <div className=" h-2 mx-auto mt-1 gap-[1px] flex items-center justify-center">
+                      {/* {meetings.some((meeting) =>
                       isSameDay(parseISO(meeting.startDatetime), day)
                     ) && (
                       <div className="w-2 h-2  rounded-full bg-sky-500 border-[1px] border-solid border-white"></div>
                     )} */}
-                    {/* //! IL PALLINO deve essere uno solo per ogni tipo di appuntamento,
+                      {/* //! IL PALLINO deve essere uno solo per ogni tipo di appuntamento,
                         //! se ci sono 2 economy allora deve essere visibile un solo pallino celeste  */}
-                    {meetings.map((meeting) => {
-                      if (isSameDay(parseISO(meeting.startDatetime), day)) {
-                        /* return meeting.id; */
-                        return (
-                          <ColoredCircle typeMeeting={meeting.typeMeeting} />
-                        );
-                      }
-                    })}
+
+                      {meetings.map((meeting) => {
+                        if (isSameDay(parseISO(meeting.startDatetime), day)) {
+                          {
+                            /* se il il tipo di meeting non è presente in array, allora 
+                          non lo inserisce e passa al prossimo meeting del giorno */
+                          }
+                          if (
+                            !filteredColoredCircle.includes(meeting.typeMeeting)
+                          ) {
+                            filteredColoredCircle.push(meeting.typeMeeting);
+                          }
+
+                          {
+                            /* console.log(
+                            "🚀 ~ file: FullCalendar.jsx:225 ~ {meetings.map ~ array",
+                            array
+                          ); */
+                          }
+                          {
+                            /* return (
+                            <ColoredCircle typeMeeting={meeting.typeMeeting} />
+                          ); */
+                          }
+                        }
+                      })}
+                      {filteredColoredCircle.length > 0 && (
+                        <div className="flex p-[4px] -space-x-1 gap-1 items-center justify-center bg-white -mt-3 z-10 rounded-full">
+                          {filteredColoredCircle.map((item) => {
+                            return <ColoredCircle typeMeeting={item} />;
+                          })}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
@@ -270,7 +303,7 @@ export default function FullCalendar({ meetings, newFilters }) {
                 ) : (
                   <p className="xl:pl-5">Nessun impegno oggi</p>
                 )}
-                <ReservationCard />
+                {/* <ReservationCard /> */}
               </ol>
             </div>
           </section>
