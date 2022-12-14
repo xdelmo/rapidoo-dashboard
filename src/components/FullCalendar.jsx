@@ -31,15 +31,15 @@ setDefaultOptions({ locale: it });
 const availableDaysMeetings = [
   {
     id: 1,
-    date: "2022-12-13",
+    date: "2022-12-20T09:00",
   },
   {
     id: 2,
-    date: "2022-12-20",
+    date: "2022-12-18T09:00",
   },
   {
     id: 3,
-    date: "2022-12-04",
+    date: "2022-12-22T09:00",
   },
 ];
 
@@ -48,20 +48,15 @@ function classNames(...classes) {
 }
 
 export default function FullCalendar({ meetings, newFilters }) {
-  console.log(
-    "🚀 ~ file: FullCalendar.jsx:50 ~ FullCalendar ~ newFilters",
-    newFilters
-  );
+  // const applyFilters = (newFilters) => {
+  //   let filterString = "";
+  //   return filterString;
 
-  const applyFilters = (newFilters) => {
-    let filterString = "";
-    return filterString;
-
-    //  else {
-    //   newFilters.forEach((filter) => {});
-    // }
-  };
-  console.log("apply newfilters", applyFilters(newFilters));
+  //   //  else {
+  //   //   newFilters.forEach((filter) => {});
+  //   // }
+  // };
+  // console.log("apply newfilters", applyFilters(newFilters));
 
   let today = startOfToday();
   let [selectedDay, setSelectedDay] = useState(today);
@@ -91,6 +86,12 @@ export default function FullCalendar({ meetings, newFilters }) {
     isSameDay(parseISO(meeting.startDatetime), selectedDay)
   );
 
+  let availableDays = availableDaysMeetings.filter((day) => {
+    isSameDay(parseISO(day.date), selectedDay);
+  });
+
+  // console.log("🚀 ~ file: FullCalendar.jsx:97 ~ availableDays", availableDays);
+  // console.log("selectedf Day", selectedDay);
   // const [meetingType, setMeetingType] = React.useState("");
 
   // const [array, setArray] = React.useState([]);
@@ -258,16 +259,23 @@ export default function FullCalendar({ meetings, newFilters }) {
                                   /* se il newFilters è vuoto allora non filtra nulla */
                                 }
                                 return true;
-                              } else
+                              } else {
+                                {
+                                  /* per tutti i tipi di filtri inseriti dall'utente */
+                                }
                                 for (let tipo in newFilters) {
-                                  console.log(tipo, "tipo");
+                                  {
+                                    /* se il tipo di filtro include il colore allora torna true */
+                                  }
                                   if (newFilters[tipo].includes(color))
                                     return true;
                                 }
+                              }
                             })
                             .map((color) => {
                               return (
                                 <div className=" p-[2px]  bg-white z-10 rounded-full">
+                                  {/* mappa tutti i colori rimasti e renderizza i pallini colorati sotto le date */}
                                   <ColoredCircle typeMeeting={color} />
                                 </div>
                               );
@@ -321,8 +329,21 @@ export default function FullCalendar({ meetings, newFilters }) {
                 ) : (
                   <p className="xl:pl-5">Nessun impegno oggi</p>
                 )}
-                {/* <ReservationCard /> */}
+                {/* Card per prenotazione solo nei giorni cerchiati */}
+                {availableDaysMeetings.map((day) => {
+                  if (isSameDay(parseISO(day.date), selectedDay)) {
+                    return <ReservationCard />;
+                  }
+                })}
               </ol>
+              <ol></ol>
+
+              {/* {
+                  availableDaysMeetings.map((availableDay) => {
+                    if (isSameDay(parseISO(availableDay.date), meeting))
+                      return <ReservationCard />;
+                  });
+                } */}
             </div>
           </section>
         </div>
