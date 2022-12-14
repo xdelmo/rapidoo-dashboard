@@ -251,9 +251,23 @@ export default function FullCalendar({ meetings, newFilters }) {
                       })}
                       {filteredColoredCircle.length > 0 && (
                         <div className="flex p-[4px] -space-x-1 gap-1 items-center justify-center bg-white -mt-3 z-10 rounded-full">
-                          {filteredColoredCircle.map((item) => {
-                            return <ColoredCircle typeMeeting={item} />;
-                          })}
+                          {filteredColoredCircle
+                            .filter((color) => {
+                              if (newFilters.length < 1) {
+                                {
+                                  /* se il newFilters è vuoto allora non filtra nulla */
+                                }
+                                return true;
+                              } else
+                                for (let tipo in newFilters) {
+                                  console.log(tipo, "tipo");
+                                  if (newFilters[tipo].includes(color))
+                                    return true;
+                                }
+                            })
+                            .map((color) => {
+                              return <ColoredCircle typeMeeting={color} />;
+                            })}
                         </div>
                       )}
                     </div>
