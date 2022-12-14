@@ -22,7 +22,7 @@ function SelectedFilters({ newFilters, state, setNewFilters }) {
 ${newFilter === "training" && "bg-training"}
 ${
   newFilter === "operation" && "bg-operation"
-} flex items-center gap-2 px-2 py-1 text-white rounded-full`}
+} flex items-center gap-2 px-2 py-1 text-white rounded-full cursor-pointer`}
             onClick={(e) => handleClick(e)}
           >
             {/* nome categoria */}
