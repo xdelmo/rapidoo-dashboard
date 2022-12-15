@@ -31,15 +31,32 @@ setDefaultOptions({ locale: it });
 const availableDaysMeetings = [
   {
     id: 1,
-    date: "2022-12-20T09:00",
+    name: "Michael Foster",
+    imageUrl:
+      "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    startDatetime: "2022-12-16T14:00",
+    endDatetime: "2022-12-16T14:30",
+    typeMeeting: "entrepreneurship",
   },
   {
     id: 2,
-    date: "2022-12-18T09:00",
+    name: "Michael Foster",
+    imageUrl:
+      "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    startDatetime: "2022-12-04T14:00",
+    endDatetime: "2022-12-04T14:30",
+    typeMeeting: "training",
+    title: "Formazione aziendale",
   },
   {
     id: 3,
-    date: "2022-12-22T09:00",
+    name: "Dries Vincent",
+    imageUrl:
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    startDatetime: "2022-12-24T17:00",
+    endDatetime: "2022-12-24T18:30",
+    typeMeeting: "economy",
+    title: "Contabilità",
   },
 ];
 
@@ -86,9 +103,9 @@ export default function FullCalendar({ meetings, newFilters }) {
     isSameDay(parseISO(meeting.startDatetime), selectedDay)
   );
 
-  let availableDays = availableDaysMeetings.filter((day) => {
-    isSameDay(parseISO(day.date), selectedDay);
-  });
+  // let availableDays = availableDaysMeetings.filter((day) => {
+  //   isSameDay(parseISO(day.date), selectedDay);
+  // });
 
   // console.log("🚀 ~ file: FullCalendar.jsx:97 ~ availableDays", availableDays);
   // console.log("selectedf Day", selectedDay);
@@ -206,7 +223,10 @@ export default function FullCalendar({ meetings, newFilters }) {
                     per un appuntamento */}
                       <div className="absolute">
                         {availableDaysMeetings.some((availableDaysMeeting) =>
-                          isSameDay(parseISO(availableDaysMeeting.date), day)
+                          isSameDay(
+                            parseISO(availableDaysMeeting.startDatetime),
+                            day
+                          )
                         ) && (
                           <div className=" h-8 w-8 mx-auto rounded-full border-accent border-[1px] border-solid "></div>
                         )}
@@ -236,22 +256,10 @@ export default function FullCalendar({ meetings, newFilters }) {
                           ) {
                             filteredColoredCircle.push(meeting.typeMeeting);
                           }
-
-                          {
-                            /* console.log(
-                            "🚀 ~ file: FullCalendar.jsx:225 ~ {meetings.map ~ array",
-                            array
-                          ); */
-                          }
-                          {
-                            /* return (
-                            <ColoredCircle typeMeeting={meeting.typeMeeting} />
-                          ); */
-                          }
                         }
                       })}
                       {filteredColoredCircle.length > 0 && (
-                        <div className="flex  -space-x-2 gap-1 items-center justify-center -mt-4 z-10">
+                        <div className="z-10 flex items-center justify-center gap-1 -mt-4 -space-x-2">
                           {filteredColoredCircle
                             .filter((color) => {
                               if (newFilters.length < 1) {
@@ -274,7 +282,7 @@ export default function FullCalendar({ meetings, newFilters }) {
                             })
                             .map((color) => {
                               return (
-                                <div className=" p-[2px]  bg-white z-10 rounded-full">
+                                <div className=" p-[2px] bg-white z-10 rounded-full">
                                   {/* mappa tutti i colori rimasti e renderizza i pallini colorati sotto le date */}
                                   <ColoredCircle typeMeeting={color} />
                                 </div>
@@ -329,12 +337,33 @@ export default function FullCalendar({ meetings, newFilters }) {
                 ) : (
                   <p className="xl:pl-5">Nessun impegno oggi</p>
                 )}
-                {/* Card per prenotazione solo nei giorni cerchiati */}
-                {availableDaysMeetings.map((day) => {
-                  if (isSameDay(parseISO(day.date), selectedDay)) {
-                    return <ReservationCard />;
-                  }
-                })}
+                {/* Card per prenotazione solo nei giorni cerchiati e filtrati per typeMeeting */}
+                {availableDaysMeetings
+                  .filter((day) => {
+                    if (newFilters.length < 1) {
+                      {
+                        /* se il newFilters è vuoto allora non filtra nulla */
+                      }
+                      return day.typeMeeting !== "";
+                    } else {
+                      {
+                        /* altrimenti per ogni tipo in newFilters */
+                      }
+                      for (let tipo in newFilters) {
+                        {
+                          /* se il typeMeeting di ogni day è incluso nell'array dei filtri
+                            allora ritorna true e lo considera nel mapping successivo */
+                        }
+                        if (newFilters[tipo].includes(day.typeMeeting))
+                          return true;
+                      }
+                    }
+                  })
+                  .map((day) => {
+                    if (isSameDay(parseISO(day.startDatetime), selectedDay)) {
+                      return <ReservationCard />;
+                    }
+                  })}
               </ol>
               <ol></ol>
 
