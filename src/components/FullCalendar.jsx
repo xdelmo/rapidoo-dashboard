@@ -219,15 +219,42 @@ export default function FullCalendar({ meetings, newFilters }) {
                         "mx-auto flex h-8 w-8 items-center justify-center relative rounded-full"
                       )}
                     >
-                      {/* cerchio per avere colpo d'occhio i giorni in cui è possibile prenotarsi 
+                      {/* //! cerchio per avere colpo d'occhio i giorni in cui è possibile prenotarsi 
                     per un appuntamento */}
                       <div className="absolute">
-                        {availableDaysMeetings.some((availableDaysMeeting) =>
-                          isSameDay(
-                            parseISO(availableDaysMeeting.startDatetime),
-                            day
-                          )
-                        ) && (
+                        {/* filtro sulle categorie scelte dall'utente aggiunto anche ai cerchi
+                      intorno ai giorni in cui è possibile registrarsi per un appuntamento */}
+                        {availableDaysMeetings
+                          .filter((availableDaysMeeting) => {
+                            if (newFilters.length < 1) {
+                              {
+                                /* se il newFilters è vuoto allora non filtra nulla */
+                              }
+                              return availableDaysMeeting.typeMeeting !== "";
+                            } else {
+                              {
+                                /* altrimenti per ogni tipo in newFilters */
+                              }
+                              for (let tipo in newFilters) {
+                                {
+                                  /* se il typeMeeting di ogni meeting è incluso nell'array dei filtri
+                            allora ritorna true e lo considera nel mapping successivo */
+                                }
+                                if (
+                                  newFilters[tipo].includes(
+                                    availableDaysMeeting.typeMeeting
+                                  )
+                                )
+                                  return true;
+                              }
+                            }
+                          })
+                          .some((availableDaysMeeting) =>
+                            isSameDay(
+                              parseISO(availableDaysMeeting.startDatetime),
+                              day
+                            )
+                          ) && (
                           <div className=" h-8 w-8 mx-auto rounded-full border-accent border-[1px] border-solid "></div>
                         )}
                       </div>
