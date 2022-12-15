@@ -37,6 +37,7 @@ const availableDaysMeetings = [
     startDatetime: "2022-12-16T14:00",
     endDatetime: "2022-12-16T14:30",
     typeMeeting: "entrepreneurship",
+    title: "Informatica e digitalizzazione",
   },
   {
     id: 2,
@@ -53,8 +54,8 @@ const availableDaysMeetings = [
     name: "Dries Vincent",
     imageUrl:
       "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    startDatetime: "2022-12-24T17:00",
-    endDatetime: "2022-12-24T18:30",
+    startDatetime: "2022-12-20T17:00",
+    endDatetime: "2022-12-20T18:30",
     typeMeeting: "economy",
     title: "Contabilità",
   },
@@ -388,11 +389,10 @@ export default function FullCalendar({ meetings, newFilters }) {
                   })
                   .map((day) => {
                     if (isSameDay(parseISO(day.startDatetime), selectedDay)) {
-                      return <ReservationCard />;
+                      return <ReservationCard key={day.id} {...day} />;
                     }
                   })}
               </ol>
-              <ol></ol>
 
               {/* {
                   availableDaysMeetings.map((availableDay) => {

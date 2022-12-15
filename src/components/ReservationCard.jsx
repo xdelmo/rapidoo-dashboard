@@ -1,17 +1,22 @@
 import React from "react";
 import { format, parseISO } from "date-fns";
 
-function ReservationCard() {
-  const reservation = {
-    id: 1,
-    name: "Dries Vincent",
-    imageUrl:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    startDatetime: "2022-12-13T14:00",
-    endDatetime: "2022-12-13T14:30",
-    typeMeeting: "training",
-    title: "Formazione aziendale",
-  };
+function ReservationCard(reservation) {
+  // console.log(
+  //   "🚀 ~ file: ReservationCard.jsx:5 ~ ReservationCard ~ props",
+  //   props
+  // );
+
+  // const reservation = {
+  //   id: 1,
+  //   name: "Dries Vincent",
+  //   imageUrl:
+  //     "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+  //   startDatetime: "2022-12-13T14:00",
+  //   endDatetime: "2022-12-13T14:30",
+  //   typeMeeting: "training",
+  //   title: "Formazione aziendale",
+  // };
   let startDateTime = parseISO(reservation.startDatetime);
   let endDateTime = parseISO(reservation.endDatetime);
 
@@ -24,7 +29,7 @@ function ReservationCard() {
   return (
     <li className="h-full ">
       <div className=" h-full flex border-accent border-solid border-[1px] rounded-md">
-        <div className="relative flex  items-center px-3 w-full py-4 ">
+        <div className="relative flex items-center w-full px-3 py-4 ">
           <figure className="absolute top-1 left-1">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +85,7 @@ function ReservationCard() {
               </div>
               <div>
                 {" "}
-                <p className=" text-xs font-light">
+                <p className="text-xs font-light ">
                   {/* format da 12 a 24 ore */}
                   <time dateTime={reservation.startDatetime}>
                     {format(startDateTime, "HH:mm")}
@@ -93,7 +98,7 @@ function ReservationCard() {
               </div>
             </div>
             {/* mette la prima lettera della parola maiuscola */}
-            <p className="font-semibold text-sm my-1">
+            <p className="my-1 text-sm font-semibold">
               {reservation.title[0].toUpperCase() +
                 reservation.title.substring(1)}
             </p>
@@ -103,7 +108,7 @@ function ReservationCard() {
         {/* blocco prenotazione */}
         <div>
           <div
-            className="bg-accent flex h-full text-white rounded-md p-5 justify-center items-center"
+            className="flex items-center justify-center h-full p-5 text-white rounded-md bg-accent"
             // cambio stato direttamente con il mouse over
             onMouseEnter={() => setIsReserved(true)}
             onMouseLeave={() => setIsReserved(false)}
