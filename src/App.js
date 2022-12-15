@@ -10,7 +10,7 @@ import Contents from "./components/Contents";
 import Performance from "./components/Performance";
 import Footer from "./components/Footer";
 // import OverTitle from "./components/OverTitle";
-
+import Modal from "./components/Modal";
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -29,10 +29,12 @@ function App() {
 
   //   window.addEventListener("resize", handleResize);
   // });
+  const [showModal, setShowModal] = React.useState(false);
 
   return (
-    <div className="App flex min-h-screen w-screen font-main">
+    <div className="flex w-screen min-h-screen App font-main">
       {/* blocco sinistro con navbar */}
+      <Modal showModal={showModal} setShowModal={setShowModal} />
       <div
         id="left-column"
         className={`${isSidebarOpen ? "flex-[1.5]" : "flex-[0.5]"}`}
@@ -45,17 +47,17 @@ function App() {
 
       {/* blocco destro con main e card */}
       <div id="right-column">
-        <main className="bg-accentDesaturated py-7 px-4">
+        <main className="px-4 bg-accentDesaturated py-7">
           <User />
           {/* griglia */}
           {/* DESKTOP GRID */}
-          <div className=" hidden xl:card-grid py-7 grid-flow-dense">
+          <div className="hidden xl:card-grid grid-flow-dense py-7">
             <Badge />
             <div className="grid-col-span-2">
               <GeneralStats />
             </div>
             <div className="grid-col-span-2 grid-row-span-2">
-              <Calendar />
+              <Calendar showModal={showModal} setShowModal={setShowModal} />
             </div>
             <RequestAdvice />
             <div className=" grid-row-span-2">
@@ -79,15 +81,15 @@ function App() {
               <div className="grid-col-span-2 grid-row-span-2">
                 <Calendar />
               </div>
-              <div className="grid-col-span-2 grid-col-span-2 mt-6">
+              <div className="mt-6 grid-col-span-2">
                 <Performance />
               </div>
             </div>
             {/* solo colonna destra */}
-            <div className=" grid-col-span-1 mb-6">
+            <div className="mb-6 grid-col-span-1">
               {" "}
               <RequestAdvice />{" "}
-              <div className=" grid-row-span-2 mt-6">
+              <div className="mt-6 grid-row-span-2">
                 <Courses />
                 <div className="mt-6">
                   <Contents />
