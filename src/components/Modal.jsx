@@ -1,25 +1,64 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Select from "react-select";
+import { StylesConfig } from "react-select/dist/react-select.cjs";
 
 export default function Modal({ showModal, setShowModal }) {
-  const addReservation = (reservation) => {
-    newReservation.push(reservation);
-    console.log(
-      "🚀 ~ file: Modal.jsx:5 ~ addReservation ~ reservation",
-      reservation
-    );
+  // const addReservation = (reservation) => {
+  //   newReservation.push(reservation);
+  //   console.log(
+  //     "🚀 ~ file: Modal.jsx:5 ~ addReservation ~ reservation",
+  //     reservation
+  //   );
 
-    return;
+  //   return;
+  // };
+
+  // const newReservation = {
+  //   id: 2,
+  //   name: "Romelu Lukaku",
+  //   imageUrl:
+  //     "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+  //   startDatetime: "2022-12-13T14:00",
+  //   endDatetime: "2022-12-13T14:30",
+  //   typeMeeting: "economy",
+  //   title: "Economia aziendale",
+  // };
+
+  const options = [
+    { value: "formazione", label: "Formazione" },
+    { value: "vendita", label: "Vendita" },
+    { value: "consulenza", label: "Consulenza" },
+  ];
+
+  // state as object to maintain form's input
+  const [values, setValues] = useState({
+    goal: "",
+    textarea: "",
+  });
+
+  console.log("🚀 ~ file: Modal.jsx:37 ~ Modal ~ values", values);
+
+  const [obiettivo, setObiettivo] = useState("");
+  // console.log("🚀 ~ file: Modal.jsx:40 ~ Modal ~ obiettivo", obiettivo);
+
+  // update a value everytime it is changed
+  const onChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
   };
 
-  const newReservation = {
-    id: 2,
-    name: "Romelu Lukaku",
-    imageUrl:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    startDatetime: "2022-12-13T14:00",
-    endDatetime: "2022-12-13T14:30",
-    typeMeeting: "economy",
-    title: "Economia aziendale",
+  // assegno il nuovo valore onChange del select allo stato values
+  useEffect(() => {
+    const nuovoObiettivo = obiettivo.value;
+    setValues({ ...values, goal: nuovoObiettivo });
+  }, [obiettivo]);
+
+  // !ERRORE FORSE PERCHè è UNA FUNZIONA IN TYPESCRIPT
+  const customStyles: StylesConfig = {
+    control: (provided: Record<string, unknown>, state: any) => ({
+      ...provided,
+
+      border: "1px solid #9496a1",
+    }),
   };
 
   return (
@@ -27,7 +66,7 @@ export default function Modal({ showModal, setShowModal }) {
       {showModal ? (
         <div className="fixed inset-0 z-50 flex min-h-screen w-screen items-center justify-center overflow-y-auto overflow-x-hidden bg-[#343a4088] outline-none focus:outline-none">
           {" "}
-          <div className="relative">
+          <div className="relative ">
             {" "}
             {/* icona x per chiudere */}
             <div
@@ -52,7 +91,7 @@ export default function Modal({ showModal, setShowModal }) {
               </button>
             </div>
             {/* DUE BLOCCHI */}
-            <div className="flex flex-col justify-between rounded-md shadow-md lg:flex-row">
+            <div className="flex flex-col justify-between rounded-md shadow-md lg:min-h-[577px] lg:flex-row">
               {/* evento */}
               <div className="p-16 bg-accentDesaturated">
                 <h3>Crea evento</h3>
@@ -94,7 +133,25 @@ export default function Modal({ showModal, setShowModal }) {
                 <form action="" className="flex flex-col my-11 ">
                   <label htmlFor="" className="text-accentParagraph">
                     Obiettivo
-                    <select
+                    <Select
+                      options={options}
+                      required
+                      placeholder="Seleziona obiettivo"
+                      onChange={setObiettivo}
+                      theme={(theme) => ({
+                        ...theme,
+                        borderRadius: 5,
+                        borderColor: "#171e25",
+                        colors: {
+                          ...theme.colors,
+                          primary25: "#dfe0e7",
+                          primary: "#171e25",
+                        },
+                      })}
+                      styles={customStyles}
+                      isSearchable={false}
+                    />
+                    {/* <select
                       name=""
                       id=""
                       placeholder="Seleziona obiettivo"
@@ -106,15 +163,16 @@ export default function Modal({ showModal, setShowModal }) {
                       <option value="lime" className="w-[10px]">
                         Lime
                       </option>
-                    </select>
+                    </select> */}
                   </label>
                   <label htmlFor="" className="mt-6 text-accentParagraph">
                     Note evento
                     <textarea
                       type="text"
-                      name=""
+                      name="textarea"
                       id=""
                       className="mt-1 min-h-[78px] w-full rounded-md border-[1px] border-solid border-accentParagraph px-2 py-1 text-accent "
+                      onChange={(e) => onChange(e)}
                     />
                   </label>
                 </form>
@@ -146,7 +204,7 @@ export default function Modal({ showModal, setShowModal }) {
                     className="px-4 py-2 text-sm text-white rounded-md bg-accent"
                     type="button"
                     // onClick={() => setShowModal(false)}
-                    onClick={addReservation}
+                    // onClick={addReservation}
                   >
                     Crea evento
                   </button>
