@@ -61,12 +61,19 @@ export default function Modal({ showModal, setShowModal }) {
     }),
   };
 
+  // Prevent body scrolling when modal is open
+  if (!showModal) {
+    document.body.style.overflow = "unset";
+  } else {
+    document.body.style.overflow = "hidden";
+  }
+
   return (
     <>
       {showModal ? (
-        <div className="fixed inset-0 z-50 flex min-h-screen w-screen items-center justify-center overflow-y-auto overflow-x-hidden bg-[#343a4088] outline-none focus:outline-none">
+        <div className="fixed inset-0 z-50 flex h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden bg-[#343a4088] outline-none focus:outline-none">
           {" "}
-          <div className="relative ">
+          <div className="relative max-h-full">
             {" "}
             {/* icona x per chiudere */}
             <div
@@ -123,7 +130,7 @@ export default function Modal({ showModal, setShowModal }) {
                 </ul>
               </div>
               {/* dettagli */}
-              <div className="flex flex-col justify-between bg-white px-14 pt-[4rem] pb-14 lg:min-w-[775px]">
+              <div className="flex flex-col justify-between bg-white px-14 pt-[4rem] pb-14 ">
                 <div>
                   <h2 className="text-2xl font-main">Dettagli</h2>
                   <h3 className="text-sm text-accentParagraph">
