@@ -91,7 +91,7 @@ export default function Modal({ showModal, setShowModal }) {
               </button>
             </div>
             {/* DUE BLOCCHI */}
-            <div className="flex flex-col justify-between rounded-md shadow-md lg:min-h-[577px] lg:flex-row">
+            <div className="flex flex-col justify-between rounded-md shadow-md lg:flex-row">
               {/* evento */}
               <div className="p-16 bg-accentDesaturated">
                 <h3>Crea evento</h3>
@@ -123,7 +123,7 @@ export default function Modal({ showModal, setShowModal }) {
                 </ul>
               </div>
               {/* dettagli */}
-              <div className="flex flex-col justify-between bg-white px-14 pt-[4rem] pb-14 xl:min-w-[775px]">
+              <div className="flex flex-col justify-between bg-white px-14 pt-[4rem] pb-14 lg:min-w-[775px]">
                 <div>
                   <h2 className="text-2xl font-main">Dettagli</h2>
                   <h3 className="text-sm text-accentParagraph">
